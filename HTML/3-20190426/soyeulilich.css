@@ -1,0 +1,94 @@
+body {
+  width: 1000px;
+  margin: 0 auto;
+  font-family: 'Courier New';
+  font-size: 15px;
+}
+
+.phan-mot {
+  background-color: darkred;
+  height: 200px;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.phan-hai {
+  background-color: forestgreen;
+  display: flex;
+  justify-content: center;
+  height: 1000px;
+}
+
+.phan-hai-trai {
+  color: rgb(247, 247, 247);
+  background-color: DarkSeaGreen;
+  width: 35%;
+  align-items: center;
+  /*padding:10px 25px;*/
+
+}
+
+.phan-hai-trai-1 {
+  background-color: darkcyan;
+  width: 100%;
+  height: 30%;
+  text-align: center;
+  padding: 0px;
+
+}
+
+.anhdaidien {
+  padding: 30px;
+}
+
+.phan-hai-trai-2 {
+  width: 100%;
+  height: 65%;
+  margin: 0px;
+}
+
+.thongtinlienhe {
+  margin: 10px;
+}
+
+.phan-hai-phai {
+  background-color: CadetBlue;
+  width: 65%;
+  color: seashell;
+}
+
+.hocvan {
+  margin: 15px;
+}
+
+.phan-ba {
+  background-color: Gainsboro;
+  height: 50px;
+  width: 100%;
+}
+
+#copy {
+  text-align: center;
+  color: darkolivegreen;
+  padding: 20px 10px;
+}
+
+/*.div-mot {
+  height: 150px;
+  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.div-mot-mot {
+    background-color: brown;
+    width: 35%;
+    height: 100%;
+}
+
+.div-mot-hai {
+    background-color: lawngreen;
+    width: 55%;
+    height: 100%;
+}*/

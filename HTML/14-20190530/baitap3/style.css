@@ -1,0 +1,55 @@
+#anhnen {
+    height: 400px;
+    width: 100%;
+    background-image: url('anhnen.jpg');
+    background-size: cover;
+    background-position: center;  /*vi tri cua anh*/
+    background-origin: content-box;
+}
+
+.pt-6 {
+    padding-top: 120px;
+}
+
+/* div#phan-hai-anh {order: 1;}
+div#phan-hai-text {order: 2;} */
+
+
+#image-1 {
+    height: 150px;
+    width: 150px;
+    border-top-left-radius: 50%;
+    border-top-right-radius:50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-image: url('anhnen-1.jpg');
+    background-size: cover;
+    background-position: center;  /*vi tri cua anh*/
+    background-origin: content-box;
+}
+
+#image-2 {
+    height: 150px;
+    width: 150px;
+    border-top-left-radius: 50%;
+    border-top-right-radius:50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-image: url('anhnen-2.jpg');
+    background-size: cover;
+    background-position: center;  /*vi tri cua anh*/
+    background-origin: content-box;
+}
+
+#image-3 {
+    height: 150px;
+    width: 150px;
+    border-top-left-radius: 50%;
+    border-top-right-radius:50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-image: url('anhnen-3.jpg');
+    background-size: cover;
+    background-position: center;  /*vi tri cua anh*/
+    background-origin: content-box;
+}

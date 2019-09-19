@@ -1,0 +1,15 @@
+/* #hinhanh1 {
+    background-image: url('hinh-anh-1.jpg');
+    background-size: cover;
+    background-position: center;
+    } */
+
+    #vongtron {
+        border-top-left-radius: 50%;
+        border-top-right-radius:50%;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        }
+
+    /* div#phan-hai-anh {order: 2;}
+    div#phan-hai-text {order: 1;} */

@@ -1,0 +1,28 @@
+/* body {
+    background-color: #333;
+    font-family: 'Times New Roman';
+    color: snow;
+    height: 100%;
+    width: 100%;
+}*/
+#cover {
+    padding: 10px 20px;
+}
+
+#phan-home {
+    padding: 20px;
+
+}
+
+.a {
+    color: silver;
+}
+
+#phan-giua {
+    padding: 20% 10%;
+}
+
+#phan-cuoi {
+    padding: 10px;
+
+}

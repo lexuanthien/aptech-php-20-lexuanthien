@@ -1,0 +1,37 @@
+#anh {
+    height: 295px;
+    width: 100%;
+    background-image: url('anh-2-1.jpg');
+    background-size: cover;
+    background-position: center;  /*vi tri cua anh*/
+    background-origin: content-box;
+}
+
+#anh2 {
+    
+    height: 295px;
+    width: 100%;
+    background-image: url('anh-2-2.jpg');
+    background-size: cover;
+    background-position: center;  /*vi tri cua anh*/
+    background-origin: content-box;
+}
+
+
+.pl-6 {
+    padding-left: 210px;
+}
+
+.pt-6 {
+    padding-top: 150px;
+}
+
+.card-columns {
+
+    column-count:2;
+}
+
+.card-columns-1 {
+
+    column-count:1;
+}

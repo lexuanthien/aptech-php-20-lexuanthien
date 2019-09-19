@@ -1,0 +1,54 @@
+#image-1 {
+    height: 295px;
+    width: 100%;
+    background-image: url('image-xe-5.jpg');
+    background-size: cover;
+    background-position: center;
+    background-origin: content-box;
+}
+
+#image-2 {
+    
+    height: 295px;
+    width: 100%;
+    background-image: url('image-xe-3.jpg');
+    background-size: cover;
+    background-position: center;  
+    background-origin: content-box;
+}
+
+#anh-nen-1 {
+    height: 360px;
+    width: 100%;
+    background-image: url('image-xe-2.jpg');
+    background-size: cover;
+    background-position: center;  
+    background-origin: content-box;
+}
+
+#anh-nen-2 {
+    height: 360px;
+    width: 100%;
+    background-image: url('image-xe-4.jpg');
+    background-size: cover;
+    background-position: center;  
+    background-origin: content-box;
+}
+
+.pl-6 {
+    padding-left: 210px;
+}
+
+.pt-6 {
+    padding-top: 150px;
+}
+
+.card-columns {
+
+    column-count:2;
+}
+
+.card-columns-1 {
+
+    column-count:1;
+}

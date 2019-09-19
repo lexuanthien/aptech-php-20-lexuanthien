@@ -1,0 +1,65 @@
+#logo {
+    font-family:"Times New Roman";
+    font-size: 35px;
+    
+}
+
+
+#phan-1 {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    color: antiquewhite;
+    font-size: 20px;
+}
+
+#ten {
+    font-size: 50px;
+    font-family: 'Times New Roman';
+}
+
+#phan-3 {
+    font-family: 'Times New Roman';
+}
+
+#about {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#older {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+#newer {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+#phan-cuoi {
+    background-color: WhiteSmoke;
+    height: 150px;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+#thumbnail-1 {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#thumbnail-2 {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

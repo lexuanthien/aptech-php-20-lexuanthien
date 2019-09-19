@@ -1,0 +1,14 @@
+body {
+    font-size: 18px;
+}
+
+#phan-hai {
+    background-color: darkgray;
+    height: 500px;
+    width: 100%;
+}
+
+#phan-ba {
+    font-size: 18px;
+    color:#5a5a5a;
+}

@@ -1,0 +1,100 @@
+body {
+    width: 1100px;
+    margin: 0 auto;
+
+}
+
+.phan-mot {
+    background-color: gold;
+    height: 70px;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.phan-mot-1 {
+    background-color: darkblue;
+    height: 40px;
+    width: 700px;
+    margin: 15px;
+}
+
+.phan-mot-2 {
+    background-color: darkblue;
+    height: 40px;
+    width: 300px;
+    margin: 15px;
+}
+
+.phan-hai {
+    background-color: darkgray;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.phan-hai-1 {
+
+    width: 600px;
+    height: 80px;
+    margin: 35px 20px;
+    align-items: center;
+
+}
+
+.phan-hai-1-1 {
+    background-color: blue;
+    height: 20px;
+    margin: 10px 0px;
+
+}
+
+.phan-hai-1-2 {
+    background-color: blue;
+    height: 30px;
+    margin: 20px 0px;
+
+}
+
+.phan-hai-2 {
+    background-color: blue;
+    width: 200px;
+    height: 80px;
+    margin: 35px 30px;
+}
+
+.phan-hai-3 {
+    background-color: blue;
+    width: 250px;
+    height: 80px;
+    margin: 35px 30px;
+}
+
+.phan-ba {
+    background-color: blue;
+    height: 50px;
+    display: flex;
+}
+
+.phan-ba-1 {
+    background-color: aliceblue;
+    width: 360px;
+    height: 3px;
+    margin: 25px 20px;
+}
+
+.phan-ba-2 {
+    background-color: aliceblue;
+    width: 360px;
+    height: 3px;
+    margin: 25px 20px;
+}
+
+.phan-ba-3 {
+    background-color: aliceblue;
+    width: 360px;
+    height: 3px;
+    margin: 25px 20px;
+}
