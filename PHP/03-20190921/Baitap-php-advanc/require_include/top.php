@@ -38,13 +38,13 @@
     </div>
     <br>
     </div>
-
+    
     <div class="container">
         <h1>Please sign in</h1>
-        <form>
+        <form action="./checklogin.php" method="POST">
             <input type="text" placeholder="Email address" border-radius=25%; name="email"><br>
             <input class="pass" type="password" placeholder="Password" name="pass">
-        </form>
+        
         <div>
             <input type="checkbox" name="remember me" value="remember">Remember Me
         </div>
@@ -62,12 +62,6 @@
             
             
         </div>
-
+        </form>
     </div>
     <br>
-    <div class="container">
-        <p> &copy; 2017 - 2019</p>
-    </div>
-</body>
-
-</html>

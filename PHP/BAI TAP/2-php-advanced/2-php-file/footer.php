@@ -1,0 +1,1 @@
+<h2>I AM FOOTER</h2>
