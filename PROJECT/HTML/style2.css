@@ -1,0 +1,73 @@
+#menu {
+    background-color: darkred;
+    height: 130px;
+    
+}
+
+#logo {
+    margin-left: 20px;
+}
+
+#listHome {
+    color:white;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-left: 250px;
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+    align-items: center;
+    
+}
+#moinhat, 
+#mobile,
+#internet,
+#esports {
+    color: white;
+    
+}
+
+#search {
+    margin-left: 150px;
+    
+    
+   
+}
+
+#info {
+    background-color: black;
+}
+
+#menu-2 {
+    
+    font-weight: bold;
+    font-size: 12px;
+}
+#menu-3 {
+    font-size: 12px;
+    
+}
+
+.dropdown {
+    position: relative;
+    display:inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:white;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color:darkseagreen;
+    padding: 10px 10px;
+}
+
+#footer {
+    background-color: black;
+    height: 300px;
+}

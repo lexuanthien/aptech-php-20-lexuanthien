@@ -1,0 +1,37 @@
+#menu {
+    background-color: darkred;
+    height: 100px;
+}
+
+#logo {
+    margin: 15px;
+}
+
+#listHome {
+    color:white;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-left: 450px;
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+}
+#moinhat, 
+#mobile,
+#internet,
+#esports {
+    color: white;
+    
+}
+
+#search {
+    margin-left: 200px;
+   
+}
+
+#info {
+    background-color: black;
+}
+
+#icon {
+    color: white;
+}
