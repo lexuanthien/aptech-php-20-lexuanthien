@@ -44,7 +44,6 @@
 }
 #menu-3 {
     font-size: 12px;
-    
 }
 
 .dropdown {
@@ -70,4 +69,22 @@
 #footer {
     background-color: black;
     height: 300px;
+}
+
+#icon a{
+    color: silver;
+}
+
+#footer-logo,
+#about {
+    border-right: 1px solid #444;
+}
+
+#about {
+    color:silver;
+}
+#FAMOUS {
+    color: white;
+    font-weight: bold;
+    font-family: serif;
 }
