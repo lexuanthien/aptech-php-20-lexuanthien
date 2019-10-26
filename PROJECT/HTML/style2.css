@@ -1,49 +1,28 @@
+#body {
+    background-color:	white;
+}
+
+/* PHẦN MENU + LOGO */
+#logoNavbar1 {
+    background-color: brown !important;
+}
+#listNavbar1 li a {
+    color: white !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 15px;
+}
+#listNavbar1 li a:hover {
+    color: darkslategray !important;
+}
+
 #menu {
-    background-color: darkred;
-    height: 130px;
-    
+    padding-right: 80px;
 }
-
-#logo {
-    margin-left: 20px;
-}
-
-#listHome {
-    color:white;
-    font-family: sans-serif;
-    font-weight: bold;
-    margin-left: 250px;
-    letter-spacing: 1.5px;
-    margin-top: 10px;
-    align-items: center;
-    
-}
-#moinhat, 
-#mobile,
-#internet,
-#esports {
-    color: white;
-    
-}
-
 #search {
-    margin-left: 150px;
-    
-    
-   
-}
-
-#info {
-    background-color: black;
-}
-
-#menu-2 {
-    
-    font-weight: bold;
-    font-size: 12px;
-}
-#menu-3 {
-    font-size: 12px;
+    color: white;
+    padding-left: 80px;
 }
 
 .dropdown {
@@ -62,9 +41,38 @@
 }
 
 .dropdown-content a {
+    background-color: 	rgb(40,40,40);
     color:darkseagreen;
     padding: 10px 10px;
 }
+/* HẾT NAVBAR1 */
+
+#listNavbar2 li a {
+    color: white !important;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+#listNavbar2 li a:hover {
+    color: brown !important;
+}
+
+#listNavbar3 li a {
+    color: silver !important;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+#listNavbar3 li a:hover {
+    color: brown !important;
+}
+/* HẾT MENU 2 */
+
+
 
 #footer {
     background-color: black;
@@ -87,4 +95,64 @@
     color: white;
     font-weight: bold;
     font-family: serif;
+}
+
+#carousel {
+    height: 300px;
+    width: 100%;
+}
+
+#phanmoinhat {
+    height: 700px;
+    width: auto;
+}
+
+#tinhot,
+#moinhat1,
+#mangxahoi,
+#mobile,
+#xuhuong,
+#danhmuc {
+    font-size: 15px;
+    font-weight:bold;
+    font-family: sans-serif;
+    
+    
+}
+
+/* MẠNG XÃ HỘI */
+#listMangxahoi {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    font-family: 'Open Sans', arial, sans-serif;
+    font-weight:bold;
+}
+#facebook {
+    align-items: center;
+    height: 32px;
+    background-color: #3578E5;
+}
+#youtube {
+    background-color: #FF4500;
+    height: 32px;
+    align-items: center;
+}
+#instagram {
+    background-color:	rgb(80,80,80);
+    height: 32px;
+    align-items: center;
+}
+#listMangxahoi a {
+    color: #fff;
+}
+#sub {
+    border-right: 1px solid silver;
+    border-left: 1px solid silver;
+}
+
+/* HẾT PHẦN MẠNG XÃ HỘI */
+
+#danhmuc a {
+    color: grey;
+    font-size: 15px;
 }
