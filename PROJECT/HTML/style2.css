@@ -73,7 +73,7 @@
 /* HẾT MENU 2 */
 
 
-
+/* PHẦN FOOTER */
 #footer {
     background-color: black;
     height: 300px;
@@ -96,7 +96,7 @@
     font-weight: bold;
     font-family: serif;
 }
-
+ /* HẾT FOOTER */
 #carousel {
     height: 300px;
     width: 100%;
