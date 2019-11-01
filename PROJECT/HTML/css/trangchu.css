@@ -1,0 +1,211 @@
+#body {
+    background-color:	rgb(56,56,56);
+    color: white;
+}
+
+/* PHẦN MENU + LOGO */
+#logoNavbar1 {
+    background-color: brown !important;
+}
+#listNavbar1 li a {
+    color: white !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 15px;
+}
+#listNavbar1 li a:hover {
+    color: darkslategray !important;
+}
+
+#menu {
+    padding-right: 80px;
+}
+#search {
+    color: white;
+    padding-left: 80px;
+}
+
+.dropdown {
+    position: relative;
+    display:inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:white;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    background-color:	rgb(88,88,88);
+    color:darkseagreen;
+    padding: 10px 10px;
+}
+/* HẾT NAVBAR1 */
+
+/* MENU 2 */
+#phanmenu2 {
+    background-color: #556B2F !important;
+}
+#listNavbar2 li a {
+    color: white !important;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+#listNavbar2 li a:hover {
+    color: brown !important;
+}
+
+#listNavbar3 li a {
+    color: silver !important;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+#listNavbar3 li a:hover {
+    color: brown !important;
+}
+/* HẾT MENU 2 */
+
+
+/* PHẦN FOOTER */
+#footer {
+    background-color: black;
+    height: 300px;
+}
+
+#icon a{
+    color: silver;
+}
+
+#footer-logo,
+#about {
+    border-right: 1px solid #444;
+}
+
+#about {
+    color:silver;
+}
+#FAMOUS {
+    color: white;
+    font-weight: bold;
+    font-family: serif;
+}
+ /* HẾT FOOTER */
+
+/* MẠNG XÃ HỘI */
+#listMangxahoi {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    font-family: 'Open Sans', arial, sans-serif;
+    font-weight:bold;
+}
+#facebook {
+    align-items: center;
+    height: 32px;
+    background-color: #3578E5;
+}
+#youtube {
+    background-color: #FF4500;
+    height: 32px;
+    align-items: center;
+}
+#instagram {
+    background-color:	rgb(80,80,80);
+    height: 32px;
+    align-items: center;
+}
+#listMangxahoi a {
+    color: #fff;
+}
+#sub {
+    border-right: 1px solid silver;
+    border-left: 1px solid silver;
+}
+
+/* HẾT PHẦN MẠNG XÃ HỘI */
+
+#carousel {
+    height: 300px;
+    width: 100%;
+}
+
+#phanmoinhat {
+    height: 700px;
+    width: auto;
+}
+
+#tinhot,
+#moinhat1,
+#mobile,
+#danhmuc,
+#danhgia {
+    font-size: 15px;
+    font-weight:bold;
+    font-family: sans-serif;
+}
+
+#mangxahoi,
+#baivietxemnhieu {
+    font-size: 17px;
+    font-weight:bold;
+    font-family: sans-serif;
+    margin-bottom: 4px;
+    color: white;
+}
+
+#hr2 {
+    border-bottom: 2px solid gold;
+}
+
+
+.hr-moinhat {
+    background-color: gold;
+    height: 4px;
+    margin-right: 22px;
+    margin-top:31px ;
+}
+
+#danhmuc {
+    margin-bottom: 10px;
+    
+}
+
+#danhmuc a {
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+#danhmuc a:hover {
+    color: brown !important;
+}
+
+
+#cotdanhgia,
+#cotkhampha {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* PHẦN MỚI NHẤT */
+
+#image {
+    height: 150px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-origin: content-box;
+    border: 2px solid white;
+    padding: 2px;
+}

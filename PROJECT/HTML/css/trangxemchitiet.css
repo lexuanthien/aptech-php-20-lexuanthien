@@ -1,0 +1,123 @@
+body {
+    background-color:	#F5F5F5;
+}
+
+/* PHẦN MENU + LOGO */
+#logoNavbar1 {
+    background-color: brown !important;
+}
+#listNavbar1 li a {
+    color: white !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 15px;
+}
+#listNavbar1 li a:hover {
+    color: darkslategray !important;
+}
+
+#menu {
+    padding-right: 80px;
+}
+#search {
+    color: white;
+    padding-left: 80px;
+}
+
+.dropdown {
+    position: relative;
+    display:inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:white;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    background-color: 	rgb(40,40,40);
+    color:darkseagreen;
+    padding: 10px 10px;
+}
+/* HẾT NAVBAR1 */
+
+#listNavbar2 li a {
+    color: white !important;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+#listNavbar2 li a:hover {
+    color: brown !important;
+}
+
+#listNavbar3 li a {
+    color: silver !important;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+#listNavbar3 li a:hover {
+    color: brown !important;
+}
+/* HẾT MENU 2 */
+
+
+/* PHẦN FOOTER */
+#footer {
+    background-color: black;
+    height: 300px;
+}
+
+#icon a{
+    color: silver;
+}
+
+#footer-logo,
+#about {
+    border-right: 1px solid #444;
+}
+
+#about {
+    color:silver;
+}
+#FAMOUS {
+    color: white;
+    font-weight: bold;
+    font-family: serif;
+}
+ /* HẾT FOOTER */
+
+#show {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+    border: 1px solid darkgrey;
+    background-color: white;
+}
+
+#button_share {
+    background-color: #3578E5;
+   
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+}
+
+#button_like {
+    background-color: red;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    margin-right: 7px;
+}
