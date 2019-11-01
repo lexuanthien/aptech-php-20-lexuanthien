@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Trang Tin Tức Công Nghệ Nổi Bật</title>
+    <title>Create Category</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="trangadmin.css">
+    <link rel="stylesheet" href="{{ url('http://localhost:8000/webtintuc/css/trangadmin.css') }}">
   </head>
   <body id="body">
       <nav class="navbar navbar-expand-md bg-dark sticky-top">
         <a class="navbar-brand ml-3" href="#">
-          <img src="/PROJECT/HTML/LOGO.png" height="70px">
+          <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="70px">
         </a>
              
         <ul class="nav ml-auto mr-3"> 
@@ -72,6 +72,26 @@
             </ul>
             
           </div>
+
+          <div class="col-10 my-3">
+            <!--PHẦN NỘI DUNG-->
+
+              <h1>Create Category</h1>
+              <hr>
+              <form action="{{ route('roles.store') }}" method="POST">
+                  <input type="hidden" name="_token" value={{csrf_token()}}>
+      
+                  <div class="form-group">
+                    <label for="">Role Name:</label>
+                    <input type="text" class="form-control" name="role_name" placeholder="Role Name">
+                  </div>
+                  <div class="mt-2">
+                    <button type="submit" class="btn btn-success font-weight-bold">THÊM</button>
+                  </div>
+              </form>    
+          </div>
+
+          <!--HẾT PHẦN NỘI DUNG-->
         </div>
       </div>
 

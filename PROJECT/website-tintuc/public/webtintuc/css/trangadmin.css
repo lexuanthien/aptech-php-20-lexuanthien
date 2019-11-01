@@ -1,11 +1,9 @@
 #menudoc {
- height: 1000px;
+ height: auto;
 }
 #list li a {
     color: white;
-    font-weight:bold;
-    
-    
+    font-weight:bold; 
 }
 
 

@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Trang Tin Tức Công Nghệ Nổi Bật</title>
+    <title>Users Page</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="trangadmin.css">
+    <link rel="stylesheet" href="{{ url('http://localhost:8000/webtintuc/css/trangadmin.css') }}">
   </head>
   <body id="body">
       <nav class="navbar navbar-expand-md bg-dark sticky-top">
         <a class="navbar-brand ml-3" href="#">
-          <img src="/PROJECT/HTML/LOGO.png" height="70px">
+          <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="70px">
         </a>
              
         <ul class="nav ml-auto mr-3"> 
@@ -71,9 +71,61 @@
               <div class="dropdown-divider"></div>
             </ul>
             
-          </div>
-        </div>
-      </div>
+    </div> -->
+    <!-- <div class="col-10 my-3"> -->
 
-</body>
-</html>
+  @extends('master')
+
+  @section('phannoidung')
+    <!-- BẮT ĐẦU PHẦN NỘI DUNG -->
+      <h1>Users Page - TRANG NGƯỜI DÙNG</h1>
+      <hr>
+      <div class="mx-4">
+        <form action="{{ route('users.create')}}" method="GET">
+            <button type="submit" class="btn btn-info rounded-0 font-weight-bold">THÊM CHỨC NĂNG MỚI CHO USER</button>
+        </form>  
+      </div>
+      <div class="mx-4">
+      <table class="table table-bordered mt-3">
+        <thead>
+        <tr class="text-center text-danger">
+                <?php
+                    $PostArray = ['ID','NAME','EMAIL', 'PASSWORD', 'VAI TRÒ','EDIT', 'XÓA'];
+                    for($i=0 ; $i < count($PostArray); $i++) {
+                        echo "<th>" . $PostArray[$i] . "</th>";
+                    }
+                ?>
+            </tr>
+        </thead>
+
+        <tbody class="text-center text-dark ">
+            @foreach($users as $user)
+                <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->password }}</td>
+                    <td>{{ $user->role->name }}</td>
+                    <td> 
+                      <form action="{{ route('users.edit', $user->id)}}" method="GET">
+                        <button type="submit" class="btn btn-warning mx-2">EDIT</button>
+                      </form>
+                    </td>
+                    <td class="">
+                    <form action="{{ route('users.destroy', $user->id)}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-danger">DELETE</button>
+                        </form>
+                    </td>
+                <tr>
+            @endforeach
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <!-- HẾT PHẦN NỘI DUNG -->
+
+  @stop
+

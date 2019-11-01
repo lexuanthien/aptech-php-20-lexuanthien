@@ -20,13 +20,17 @@ Route::get('trangchu', function() {
     return view('trangchu');
 });
 
-Route::get('tao', function() {
-    return view('admin.post.create');
+Route::get('master', function() {
+    return view('admin.master');
 });
+
+Route::get('admin/login', 'DangNhapAdminController@getLoginAdmin')->name('login.input');
+Route::post('admin/login', 'DangNhapAdminController@postLoginAdmin')->name('login.store');
 
 Route::group(['prefix'=>'admin'], function() {
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
     Route::resource('categories', 'CategoryController');
     Route::resource('posts', 'PostController');
+    Route::resource('comments', 'CommentController');
 });

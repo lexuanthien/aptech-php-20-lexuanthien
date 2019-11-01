@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Trang Tin Tức Công Nghệ Nổi Bật</title>
+    <title>Edit Category</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="trangadmin.css">
+    <link rel="stylesheet" href="{{ url('http://localhost:8000/webtintuc/css/trangadmin.css') }}">
   </head>
   <body id="body">
       <nav class="navbar navbar-expand-md bg-dark sticky-top">
         <a class="navbar-brand ml-3" href="#">
-          <img src="/PROJECT/HTML/LOGO.png" height="70px">
+          <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="70px">
         </a>
              
         <ul class="nav ml-auto mr-3"> 
@@ -71,7 +71,27 @@
               <div class="dropdown-divider"></div>
             </ul>
             
+    </div>
+
+          <!--PHẦN NỘI DUNG-->
+
+          <div class="col-10 my-3">
+              <h1>Edit Category - CHỈNH SỬA</h1>
+              <hr>
+              <form action="{{ route('roles.update', $role->id)}}" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                  <label>Role Name:</label>
+                  <input type="text" class="form-control" name="name_role" value="{{$role->name}}">
+                </div>
+                <div class="mt-2">
+                  <button type="submit" class="btn btn-warning font-weight-bold">LƯU</button>
+                </div>
+              </form>
           </div>
+
+          <!--HẾT PHẦN NỘI DUNG-->
         </div>
       </div>
 
