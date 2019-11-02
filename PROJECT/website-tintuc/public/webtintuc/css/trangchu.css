@@ -1,6 +1,7 @@
 #body {
     background-color:	rgb(56,56,56);
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* PHẦN MENU + LOGO */
@@ -11,11 +12,10 @@
     color: white !important;
     font-weight: bold;
     letter-spacing: 1px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-right: 15px;
+    margin-right: 20px;
 }
 #listNavbar1 li a:hover {
-    color: darkslategray !important;
+    color: rgb(43, 65, 65) !important;
 }
 
 #menu {
@@ -57,8 +57,7 @@
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 1px;
-    font-family: Arial, Helvetica, sans-serif;
-    
+
 }
 #listNavbar2 li a:hover {
     color: brown !important;
@@ -69,8 +68,7 @@
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 1px;
-    font-family: Arial, Helvetica, sans-serif;
-    
+
 }
 #listNavbar3 li a:hover {
     color: brown !important;
@@ -141,7 +139,7 @@
 }
 
 #phanmoinhat {
-    height: 700px;
+    height: auto;
     width: auto;
 }
 
@@ -152,7 +150,8 @@
 #danhgia {
     font-size: 15px;
     font-weight:bold;
-    font-family: sans-serif;
+    letter-spacing: 0.5px;
+    height:auto;
 }
 
 #mangxahoi,
@@ -168,6 +167,11 @@
     border-bottom: 2px solid gold;
 }
 
+.hr-ngang {
+    background-color: white;
+    height: 2px;
+}
+
 
 .hr-moinhat {
     background-color: gold;
@@ -178,7 +182,7 @@
 
 #danhmuc {
     margin-bottom: 10px;
-    
+
 }
 
 #danhmuc a {
@@ -202,10 +206,29 @@
 
 #image {
     height: 150px;
-    width: 100%;
+    width: 200px;
     background-size: cover;
     background-position: center;
     background-origin: content-box;
     border: 2px solid white;
     padding: 2px;
+}
+
+#image_ngang {
+    height: 100px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+    background-origin: content-box;
+    border: 2px solid white;
+    padding: 2px;
+}
+
+#dau3cham {
+    width: 220px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    /* dùng để đổi text thành dấu 3 chấm */
 }

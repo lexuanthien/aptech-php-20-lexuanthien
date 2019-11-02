@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 Route::get('trangchu', function() {
-    return view('trangchu');
+    return view('home.trangchu');
 });
 
 Route::get('master', function() {
@@ -34,3 +34,5 @@ Route::group(['prefix'=>'admin'], function() {
     Route::resource('posts', 'PostController');
     Route::resource('comments', 'CommentController');
 });
+
+Route::get('trangchu', 'HomeController@TrangChu');

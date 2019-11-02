@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Trang Tin Tức Công Nghệ Nổi Bật</title>
+    <title>Trang Tin Tức Công Nghệ Nổi Bật - Tin Tức Hàng Đầu</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/webtintuc/trangchu.css') }}">
+    <link rel="stylesheet" href="{{ url('http://localhost:8000/webtintuc/css/trangchu.css') }}">
   </head>
   <body id="body">
     <!--PHẦN LOGO + MENU-->  
@@ -21,7 +21,7 @@
         <div class="container">
             <div class="">
             <a class="navbar-brand" href="#">
-                <img src="http://localhost:8000/image/LOGO.png" height="100px">
+                <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="70px">
             </a>
             </div>
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -32,25 +32,19 @@
                       <li class="nav-item">
                         <a class="nav-link active d-none d-md-block" href="#"><i class="fas fa-home fa-lg pb-2"></i></a>
                       </li>
+
+                      @foreach($categories as $category)
                       <li class="nav-item">
-                        <a class="nav-link" href="#">MỚI NHẤT</a>
+                        <a class="nav-link" href="#">{{$category->name}}</a>
                       </li>
-                      <li class="nav-item dropdown">
+                      @endforeach
+                      <!-- <li class="nav-item dropdown">
                         <a  class="nav-link dropdown-toggle" href="#" id="navbardrop">MOBILE</a>
                       <div class="dropdown-content">
                         <a class="dropdown-item font-weight-bold" href="#">SMARTPHONE</a>
                         <a class="dropdown-item font-weight-bold" href="#">TABLET</a>
                       </div>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">INTERNET</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">ESPORTS</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">CÔNG NGHỆ</a>
-                      </li>
+                      </li> -->
                 </ul>
                 <form id="search" class="nav-light">
                         <i class="d-none d-md-block fas fa-search fa-lg"></i>
@@ -65,14 +59,11 @@
     <div id="phanmenu2" class="container-fluid bg-dark">
       <div class="container">
         <div class="row">
-          <div class="d-none d-sm-block col-sm-12 col-md-6 ">
+          <div class="d-none d-sm-block col-sm-12 col-md-8 ">
             <nav class="navbar navbar-expand-sm">
               <ul id="listNavbar2" class="navbar-nav">  
                         <li class="nav-item">
-                        <a class="nav-link" href="#">TIN TỨC</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">ĐÁNH GIÁ</a>
+                        <a class="nav-link" href="#">MỚI NHẤT</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="#">CỘNG ĐỒNG</a>
@@ -89,7 +80,7 @@
                 </ul>
             </nav>
           </div>
-          <div class="col-6 d-none d-md-block col-md-6">
+          <div class="col-6 d-none d-md-block col-md-4">
               <nav class="navbar navbar-expand-sm navbar-dark justify-content-end">
                 <ul id="listNavbar3" class="navbar-nav">
                         <li class="nav-item">
@@ -123,35 +114,24 @@
         <div class="col-9">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-                
                 <ul class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ul>
+                <?php $tinhot = $posts->where('tin_hot',2)->sortByDesc('created_at')->take(3); 
                 
+                ?>
+                <?php $i = 0 ?>
+                @foreach($posts as $post)
+                  <li data-target="#myCarousel" data-slide-to="{{$i}}" 
+                    @if($i = 0)
+                      class="active"
+                    @endif
+                  ></li>
+                <?php  $i++; ?>  
+                @endforeach
+                </ul>
                 
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="/PROJECT/IMAGE/hinh1.jpg" alt="Los Angeles" width="100%" height="300">
-                    <div class="carousel-caption text-left">
-                        <h1>Example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
-                          eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                      </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/PROJECT/IMAGE/hinh2.jpg" alt="Chicago" width="100%" height="300">
-                    <div class="carousel-caption text-left">
-                        <h1>Example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
-                          eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                      </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/PROJECT/IMAGE/hinh3.jpg" alt="New York" width="100%" height="300">
                     <div class="carousel-caption text-left">
                         <h1>Example headline.</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
@@ -191,15 +171,19 @@
           </div>
 
           <!-- PHẦN NỘI DUNG TRONG MỤC MỚI NHẤT-->
-          <div class="row mt-3">
-            <div class="col-3">
-              <img id="image" src='/PROJECT/IMAGE/hinh1.jpg'>
-            </div>
+          <?php $new = $posts->sortByDesc('created_at')->take(5);
+          
+          ?>
+          @foreach($new->all() as $moinhat)
+          <div class="row my-4">
+              <div class="col-3">
+                <img id="image" src="uploads/posts/{{ $moinhat['image'] }}">
+              </div>
 
-            <div class="col-9 d-flex justify-content-center flex-column text-algin-center">
-              <h1>Fully Responsive Design</h1>
-              <p>When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
-            </div>
+              <div class="col-9 text-algin-center">
+                <h4>{{ $moinhat['title'] }}</h4>
+                <p>{{ $moinhat['description'] }}</p>
+              </div>
             <!-- <div class="col-3">
               <a>HÌNH ẢNH</a>
             </div>  
@@ -207,6 +191,7 @@
               <a>PHẦN NỘI DUNG</a>
             </div> -->
           </div>
+          @endforeach
           <!--HẾT PHẦN NỘI DUNG CỦA MỤC MỚI NHẤT-->
 
         </div>
@@ -253,7 +238,7 @@
               </div>
           </div>
 
-          <!--VIDEO-->
+          <!--BÀI VIẾT XEM NHIỀU-->
           <div id="hr2" class="row">
               <span id="baivietxemnhieu" class="mt-4">BÀI VIẾT XEM NHIỀU</span>
           </div>
@@ -261,43 +246,59 @@
         </div>
       </div>
     </div>
-    <br>
+
 
     <!--PHẦN MOBILE-->
     <div class="container">
-      <hr>
+      <hr class="hr-ngang">
       <div class="row">
         <div class="col-9">
-            <div class="row">
-                <div class="col-md-4 col-lg-2">
-                  <a id="mobile" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">MOBILE</a>
-                  
-                </div>
-                <div class="d-none d-md-block col-md-8 col-lg-10">
-                    <hr class="hr-moinhat">
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-12">
-                  <a>LÊ XUÂN THIỆN</a>
-                </div>  
-            </div>
-            <div class="row">
+          @foreach($categories->take(3) as $category) <!--dùng take(3) để chỉ lấy ra 3 hàng trong categories-->
+            <div class="row my-4">
               <div class="col-md-4 col-lg-2">
-                <a id="mobile" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">ESPORTS</a>
+                <a id="mobile" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">{{ $category->name }}</a>
               </div>
               <div class="d-none d-md-block col-md-8 col-lg-10">
-                  <hr class="hr-moinhat">
+                <hr class="hr-moinhat">
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-12">
-                <a>LÊ XUÂN THIỆN</a>
+
+              <?php $data = $category->posts->sortByDesc('created_at')->take(5);
+                    $post_doc = $data->shift();
+              ?>
+              <div class="row mt-3">
+                <div class="col-3">
+                  <img id="image" src="uploads/posts/{{ $post_doc['image'] }}">
+                </div>
+
+                <div class="col-9 text-algin-center">
+                  <h4>{{$post_doc['title']}}</h4>
+                  <p>{{$post_doc['description']}}</p>
+                </div>  
+              </div>
+              <!-- POST NGANG 4 CÁI -->
+              <div class="row mt-3">
+                @foreach($data->all() as $tin)  
+                <div class="col-6">       
+                  <div class="row mt-3 ">
+                    <div class="col-5 ">
+                      <img id="image_ngang" src="uploads/posts/{{ $tin['image'] }}">
+                    </div>
+
+                    <div class="col-7" style="height:100px;">
+                      <span id="dau3cham" >{{$tin['title']}}</span>
+                      <div><p>{{$tin['category_id']}}</p></div>
+                    </div>  
+                  </div>
+                </div>
+                @endforeach  
               </div>  
-          </div>
+          @endforeach
         </div>
+
+
         <div class="col-3">
-            <div class="row">
+            <div class="row my-4">
                 <div class="col-12">
                   <a id="danhgia" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">ĐÁNH GIÁ</a>
                   
@@ -312,7 +313,6 @@
             <div class="row">
                 <div class="col-12">
                   <a id="danhmuc" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">DANH MỤC</a>
-                  
                 </div>
               </div>
               <div class="row mt-2">
@@ -341,12 +341,13 @@
     </div>
 
     <br>
+    <br>
     <div id="footer">
         <div class="container pt-5">
         <div class="row">
           <div id="footer-logo" class="d-none d-lg-block col-lg-3" style="justify-content: center; display: flex; align-items: center; flex-direction: column; text-align: center;">
                 <a id="logo" class="navbar-brand " href="#">
-                        <img src="{{ url('http://localhost:8000/image/LOGO.png') }}" height="200px" width="200px" alt="">
+                        <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="200px" width="200px" alt="">
                 </a>
           </div>
           <div id="about" class="col-sm-9 col-md-6">

@@ -11,11 +11,11 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        $UserArray = [1,2,3,4,5,6,7,8,9,10];
-        $CategoryArray = [1,2,3,4,5,6,7];
+        $UserArray = [1,2];
+        $CategoryArray = [1,2,3,4,5];
         $TinHot = [1,2];
         $thien = Faker\Factory::create();
-        for($i = 0;$i < 10; $i++) {
+        for($i = 0;$i < 2; $i++) {
             Post::create([
                 'title' => $thien->text($maxNbChars = 20),
                 'description' => $thien->text($maxNbChars = 200),

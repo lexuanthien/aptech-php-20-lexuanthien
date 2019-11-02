@@ -12,7 +12,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         Category::insert([
-            ['name'=> 'MOBILE'], ['name' => 'INTERNET'], ['name' => 'ESPORTS'], ['name' => 'CÔNG NGHỆ'], ['name' => 'ĐÁNH GIÁ'], ['name' => 'KHÁM PHÁ'], ['name' => 'CỘNG ĐỒNG']
+            ['name'=> 'MOBILE'], ['name' => 'INTERNET'], ['name' => 'ESPORTS'], ['name' => 'CÔNG NGHỆ'], ['name' => 'ĐÁNH GIÁ']
         ]);
     }
 }

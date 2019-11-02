@@ -19,7 +19,7 @@
                   </div>
                   <div class="form-group">
                       <label for="">CONTENT:</label>
-                      <div><textarea name="content" id="editor1" rows="10" cols="100%">
+                      <div><textarea name="content" id="editor1" rows="200" cols="100%">
                           Điền nội dung của bài viết vào đây.
                       </textarea><div>
                   </div>

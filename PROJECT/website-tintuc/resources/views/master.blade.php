@@ -51,12 +51,11 @@
             </div>
 
             <div class="dropdown-divider"></div>
-            <div class="dropdown-divider"></div>
+            <!-- <div class="dropdown-divider"></div> -->
 
             <div class="my-3">
               <li><a href="{{ route('categories.index')}}"><i class="fas fa-align-right"></i> Categories </a></li> 
             </div>
-
             <div class="dropdown-divider"></div>
 
             <div class="my-3">
@@ -69,7 +68,7 @@
               <li><a href="{{ route('roles.index')}}"><i class="fas fa-radiation-alt"></i> Roles </a></li> 
             </div>
 
-            <div class="dropdown-divider"></div>
+            <!-- <div class="dropdown-divider"></div> -->
             <div class="dropdown-divider"></div>
 
             <div class="my-3">

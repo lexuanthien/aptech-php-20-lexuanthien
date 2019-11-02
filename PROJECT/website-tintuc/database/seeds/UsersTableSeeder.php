@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         $RoleArray = [1,2,3];
         $thien = Faker\Factory::create();
-        for($i = 0;$i < 10; $i++) {
+        for($i = 0;$i < 2; $i++) {
             User::create([
                 'name' => $thien->firstNameMale,
                 'email' => $thien->safeEmail,

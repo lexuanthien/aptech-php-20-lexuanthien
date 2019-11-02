@@ -11,8 +11,8 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        $UserArray = [1,2,3,4,5,6,7,8,9,10];
-        $PostArray = [1,2,3,4,5,6,7,8,9,10];
+        $UserArray = [1,2];
+        $PostArray = [1,2];
         $thien = Faker\Factory::create();
         for($i = 0;$i < 10; $i++) {
             Comment::create([
