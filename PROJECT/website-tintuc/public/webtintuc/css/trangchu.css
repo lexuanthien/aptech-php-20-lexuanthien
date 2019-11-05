@@ -232,3 +232,23 @@
     overflow: hidden;
     /* dùng để đổi text thành dấu 3 chấm */
 }
+
+#image_carousel {
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-origin: content-box;
+    border: 2px solid white;
+    padding: 2px;
+}
+
+#title_carousel {
+    width: 580px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: #FF4500;
+    font-weight:bold;
+}

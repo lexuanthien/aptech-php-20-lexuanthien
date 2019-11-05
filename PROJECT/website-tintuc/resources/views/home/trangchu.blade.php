@@ -33,7 +33,7 @@
                         <a class="nav-link active d-none d-md-block" href="#"><i class="fas fa-home fa-lg pb-2"></i></a>
                       </li>
 
-                      @foreach($categories as $category)
+                      @foreach($categories->take(5) as $category)
                       <li class="nav-item">
                         <a class="nav-link" href="#">{{$category->name}}</a>
                       </li>
@@ -114,40 +114,47 @@
         <div class="col-9">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-                <ul class="carousel-indicators">
-                <?php $tinhot = $posts->where('tin_hot',2)->sortByDesc('created_at')->take(3); 
+              <ul class="carousel-indicators">
+                <?php $tinhot = $posts->where('tin_hot',2)->sortByDesc('created_at')->take(5); 
                 
                 ?>
-                <?php $i = 0 ?>
-                @foreach($posts as $post)
+                @for($i = 0; $i < count($tinhot); $i++)
                   <li data-target="#myCarousel" data-slide-to="{{$i}}" 
-                    @if($i = 0)
+                    @if($i == 0)
                       class="active"
                     @endif
                   ></li>
-                <?php  $i++; ?>  
-                @endforeach
-                </ul>
+                @endfor 
                 
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="/PROJECT/IMAGE/hinh1.jpg" alt="Los Angeles" width="100%" height="300">
+              </ul>
+                
+              <div class="carousel-inner">
+                  <?php $i =0; ?>
+                  @foreach($tinhot as $tin)
+                  <div 
+                    @if($i == 0)
+                        class="carousel-item active"
+                    @else
+                        class="carousel-item"
+                    @endif    
+                  >
+                  <?php $i++; ?>
+                    <img id="image_carousel" src="uploads/posts/{{ $tin['image'] }}" alt="Los Angeles">
                     <div class="carousel-caption text-left">
-                        <h1>Example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at
-                          eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                        <h3 id= "title_carousel">{{ $tin['title'] }}</h3>
+                        <p><a class="btn btn-lg btn-info" href="#" role="button">Xem Chi Tiết</a></p>
                       </div>
                   </div>
-                </div>
-                
-                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                  <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                  <span class="carousel-control-next-icon"></span>
-                </a>
+                  @endforeach
               </div>
+                
+              <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+              </a>
+            </div>
         </div>
 
         <div class="col-3">
@@ -287,7 +294,7 @@
 
                     <div class="col-7" style="height:100px;">
                       <span id="dau3cham" >{{$tin['title']}}</span>
-                      <div><p>{{$tin['category_id']}}</p></div>
+                      <i><b>{{$tin['created_at']}}</b></i>
                     </div>  
                   </div>
                 </div>

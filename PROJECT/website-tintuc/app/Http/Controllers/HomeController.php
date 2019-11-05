@@ -6,7 +6,8 @@ use App\Home;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
-use Illuminate\Database\Eloquent\Collection;
+
+use Illuminate\Support\Collection;
 
 
 class HomeController extends Controller
