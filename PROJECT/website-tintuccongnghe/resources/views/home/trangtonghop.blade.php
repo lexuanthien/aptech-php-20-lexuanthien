@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Trang Tin Tức Công Nghệ Nổi Bật - Tin Tức Hàng Đầu</title>
+    <title>TRANG TIN {{ $categories->name }}</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,9 +33,9 @@
                         <a class="nav-link active d-none d-md-block" href="#"><i class="fas fa-home fa-lg pb-2"></i></a>
                       </li>
 
-                      @foreach($categories->take(5) as $category)
+                      @foreach($theloaipost->take(5) as $theloai)
                       <li class="nav-item">
-                        <a class="nav-link" href="#">{{$category->name}}</a>
+                        <a class="nav-link" href="#">{{$theloai->name}}</a>
                       </li>
                       @endforeach
                       <!-- <li class="nav-item dropdown">
@@ -111,102 +111,44 @@
     </div>
     <br>
 
-    <div class="container">
-      <!--TIN HOT-->
-      <a href="#"><button id="tinhot" type="submit" class="btn btn-danger rounded-0">TIN HOT <i class="fas fa-bolt"></i></button></a>
-      <div id= "carousel" class="row mt-3">
-        <div class="col-9">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-              <ul class="carousel-indicators">
-                <?php $tinhot = $posts->where('tin_hot',2)->sortByDesc('created_at')->take(3); 
-                
-                ?>
-                @for($i = 0; $i < count($tinhot); $i++)
-                  <li data-target="#myCarousel" data-slide-to="{{$i}}" 
-                    @if($i == 0)
-                      class="active"
-                    @endif
-                  ></li>
-                @endfor 
-                
-              </ul>
-                
-              <div class="carousel-inner">
-                  <?php $i =0; ?>
-                  @foreach($tinhot as $tin)
-                  <div 
-                    @if($i == 0)
-                        class="carousel-item active"
-                    @else
-                        class="carousel-item"
-                    @endif    
-                  >
-                  <?php $i++; ?>
-                    <img id="image_carousel" src="uploads/posts/{{ $tin['image'] }}" alt="Los Angeles">
-                    <div class="carousel-caption text-left">
-                        <h3 id= "title_carousel">{{ $tin['title'] }}</h3>
-                        <p><a class="btn btn-lg btn-info" href="#" role="button">Xem Chi Tiết</a></p>
-                      </div>
-                  </div>
-                  @endforeach
-              </div>
-                
-              <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                  <span class="carousel-control-prev-icon"></span>
-              </a>
-              <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                  <span class="carousel-control-next-icon"></span>
-              </a>
-            </div>
-        </div>
-
-        <div class="col-3">
-
-        </div>
-
-      </div>
-    </div>
+    <!-- PHẦN NỘI DUNG -->
 
     <div id="phanmoinhat" class="container mt-3">
       <div class="row">
         <div class="col-9">
-          <!-- MỚI NHẤT -->
+
           <div class="row">
             <div class="col-md-4 col-lg-2">
-              <a id="moinhat1" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">MỚI NHẤT</a>
+              <a id="moinhat1" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">{{$categories->name}}</a>
             </div>
             <div class="d-none d-md-block col-md-8 col-lg-10">
                   <hr class="hr-moinhat">
             </div>
           </div>
 
-          <!-- PHẦN NỘI DUNG TRONG MỤC MỚI NHẤT-->
-          <?php $new = $posts->sortByDesc('created_at')->take(5);
+          <?php $new = $posts->sortByDesc('created_at');
           
           ?>
-          @foreach($new->all() as $moinhat)
+          @foreach($new as $tin)
           <div class="row my-4">
               <div class="col-3">
-                <img id="image" src="uploads/posts/{{ $moinhat['image'] }}">
+                <img id="image" src="uploads/posts/{{ $tin->image}}">
               </div>
 
               <div class="col-9 text-algin-center">
-                <h4 id= "titleposts">{{ $moinhat['title'] }}</h4>
-                <p id= "titleposts">{{ $moinhat['description'] }}</p>
+                <h4 id= "titleposts">{{ $tin->title }}</h4>
+                <p id= "titleposts">{{ $tin->description}}</p>
+                
               </div>
-            <!-- <div class="col-3">
-              <a>HÌNH ẢNH</a>
-            </div>  
-            <div class="col-9">
-              <a>PHẦN NỘI DUNG</a>
-            </div> -->
           </div>
+          <hr>
           @endforeach
-          <!--HẾT PHẦN NỘI DUNG CỦA MỤC MỚI NHẤT-->
 
+        <div class="row">
+            <div id="phantrang"> {{$posts->links()}} </div>
         </div>
-
+         
+        </div>
       
         <div id="listMangxahoi" class="col-3">
           <div class="row">
@@ -258,109 +200,9 @@
       </div>
     </div>
 
-
-    <!--PHẦN MOBILE-->
-    <div class="container">
-      <hr class="hr-ngang">
-      <div class="row">
-        <div class="col-9">
-          @foreach($categories->take(3) as $category) <!--dùng take(3) để chỉ lấy ra 3 hàng trong categories-->
-            <div class="row my-3">
-              <div class="col-md-4 col-lg-2">
-                <a id="mobile" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">{{ $category->name }}</a>
-              </div>
-              <div class="d-none d-md-block col-md-8 col-lg-10">
-                <hr class="hr-moinhat">
-              </div>
-            </div>
-
-              <?php $data = $category->posts->sortByDesc('created_at')->take(5);
-                    $post_doc = $data->shift();
-              ?>
-              <div class="row mt-3">
-                <div class="col-3">
-                  <img id="image" src="uploads/posts/{{ $post_doc['image'] }}">
-                </div>
-
-                <div class="col-9 text-algin-center">
-                  <h4 id= "titleposts">{{$post_doc['title']}}</h4>
-                  <div class="mb-2">
-                        <b id="de" ><i>inews - <a id="thoigian"> {{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a></i></b>
-                  </div>
-                  <p id= "titleposts">{{$post_doc['description']}}</p>
-                </div>  
-              </div>
-              <!-- POST NGANG 4 CÁI -->
-              <div class="row mt-3">
-                @foreach($data->all() as $tin)  
-                <div class="col-6">       
-                  <div class="row mt-3 ">
-                    <div class="col-5 ">
-                      <img id="image_ngang" src="uploads/posts/{{ $tin['image'] }}">
-                    </div>
-
-                    <div class="col-7" style="height:100px;">
-                      <span id="dau3cham" >{{$tin['title']}}</span>
-                      <div class="mb-2">
-                        <b id="de" ><i>inews - <a id="thoigian"> {{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a></i></b>
-                      </div>
-                    </div>  
-                  </div>
-                </div>
-                @endforeach  
-              </div>  
-          @endforeach
-        </div>
+    <!-- PHẦN NỘI DUNG -->
 
 
-        <div class="col-3">
-            <div class="row my-3">
-                <div class="col-12">
-                  <a id="danhgia" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">ĐÁNH GIÁ</a>
-                  
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-12">
-                <?php $danhgia = $posts->where('category_id',5)->sortByDesc('created_at')->take(5); 
-                
-                ?>
-                @foreach($danhgia as $tindanhgia)
-                  <a id="tindanhgia">{{ $tindanhgia->title }}</a>
-                  <b id="de" ><i>inews - <a id="thoigian"> {{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a></i></b>
-                  <hr id= "hrdanhgia">
-                @endforeach  
-                </div>  
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                  <a id="danhmuc" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">DANH MỤC</a>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div id="danhmuc" class="col-12">
-                  @foreach($categories as $category)
-                  <div id="cotdanhgia">
-                    <a href="#">{{ $category->name }}</a>
-                  </div>
-                  @endforeach
-                  <div id="cotdanhgia">
-                    <a href="#">CỘNG ĐỒNG</a>
-                  </div>
-                  <div>
-                    <a href="#">LIÊN HỆ</a>
-                  </div>
-
-                </div>  
-            </div>
-        </div>
-      </div>
-
-    </div>
-
-    <br>
-    <br>
     <div id="footer">
         <div class="container py-4">
         <div class="row">

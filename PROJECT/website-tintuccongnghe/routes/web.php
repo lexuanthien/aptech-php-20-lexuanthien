@@ -15,11 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('trangchu', function() {
-    return view('home.trangchu');
-});
-
 Route::get('master', function() {
     return view('admin.master');
 });
@@ -36,3 +31,4 @@ Route::group(['prefix'=>'admin'], function() {
 });
 
 Route::get('trangchu', 'HomeController@TrangChu');
+Route::get('tintuc/{id}/{slug}.html','HomeController@TinTuc');
