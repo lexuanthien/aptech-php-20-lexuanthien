@@ -24,7 +24,15 @@ class HomeController extends Controller
         $theloai = Category::get();
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
         $category = Category::where('id', '=', $id)->first();
-        $post = Post::where('category_id','=', $id)->paginate(5);
+        $post = Post::where('category_id','=', $id)->orderBy('created_at', 'desc')->paginate(5); //paginate(5) để hiển thị 5 tin trong 1 trang
         return view('home.trangtonghop', ['categories' => $category, 'theloaipost'=>$theloai, 'posts' => $post, 'time' => $dt]);
+    }
+    
+    function XemChiTiet($id) {
+        $post = Post::where('id', '=', $id)->first();
+        $theloai = Category::get();
+        $dt = Carbon::now('Asia/Ho_Chi_Minh');
+        $category = Category::where('id', '=', $id)->first();
+        return view('home.trangxemchitiet', ['categories' => $category, 'theloaipost'=>$theloai, 'posts' => $post, 'time' => $dt]);
     }
 }

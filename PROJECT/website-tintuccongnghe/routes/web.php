@@ -19,8 +19,8 @@ Route::get('master', function() {
     return view('admin.master');
 });
 
-Route::get('admin/login', 'DangNhapAdminController@getLoginAdmin')->name('login.input');
-Route::post('admin/login', 'DangNhapAdminController@postLoginAdmin')->name('login.store');
+Route::get('admin/login', 'LoginAdminController@getLoginAdmin')->name('login.input');
+Route::post('admin/login', 'LoginAdminController@postLoginAdmin')->name('login.store');
 
 Route::group(['prefix'=>'admin'], function() {
     Route::resource('roles', 'RoleController');
@@ -30,5 +30,13 @@ Route::group(['prefix'=>'admin'], function() {
     Route::resource('comments', 'CommentController');
 });
 
-Route::get('trangchu', 'HomeController@TrangChu');
-Route::get('tintuc/{id}/{slug}.html','HomeController@TinTuc');
+Route::get('trangchu', 'HomeController@TrangChu')->name('trangchu');
+Route::get('tintuc/{id}.html','HomeController@TinTuc')->name('tintuc');
+Route::get('xemchitiet/{id}.html','HomeController@XemChiTiet')->name('xemchitiet');
+
+Route::get('home', 'WebsiteController@TrangChu')->name('trangchu');
+Route::get('news/{id}.html','WebsiteController@TinTuc')->name('news');
+Route::get('show/{id}.html','WebsiteController@XemChiTiet')->name('xembaiviet');
+
+Route::get('login', 'WebsiteController@Login')->name('login');
+Route::get('register', 'WebsiteController@Register')->name('register');

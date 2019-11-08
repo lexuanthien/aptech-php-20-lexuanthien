@@ -20,7 +20,7 @@
     <nav id="logoNavbar1" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container">
             <div class="">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('trangchu') }}">
                 <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="60px">
             </a>
             </div>
@@ -30,12 +30,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul id="listNavbar1" class="navbar-nav ml-auto">
                       <li class="nav-item">
-                        <a class="nav-link active d-none d-md-block" href="#"><i class="fas fa-home fa-lg pb-2"></i></a>
+                        <a class="nav-link active d-none d-md-block" href="{{ route('trangchu') }}"><i class="fas fa-home fa-lg pb-2"></i></a>
                       </li>
 
                       @foreach($categories->take(5) as $category)
                       <li class="nav-item">
-                        <a class="nav-link" href="#">{{$category->name}}</a>
+                        <a class="nav-link" href="{{ route('tintuc', $category->id) }}">{{$category->name}}</a>
                       </li>
                       @endforeach
                       <!-- <li class="nav-item dropdown">
@@ -46,8 +46,11 @@
                       </div>
                       </li> -->
                 </ul>
+                
                 <form id="search" class="nav-light">
-                        <i class="d-none d-md-block fas fa-search fa-lg"></i>
+                        <!-- <i class="d-none d-md-block fas fa-search fa-lg"></i> -->
+                        <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
+                        <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
         </div>
       </div>
