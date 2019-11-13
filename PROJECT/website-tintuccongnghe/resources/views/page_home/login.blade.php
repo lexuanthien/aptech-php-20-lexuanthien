@@ -37,12 +37,14 @@
                             <h5>Great to have you back!</h5>
                         </div>
 
-                        <form action="index.html" method="post">
+                        <form action="{{ route('login.post') }}" method="post">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox mr-sm-2">
@@ -52,6 +54,22 @@
                             </div>
                             <button id="nutlogin" type="submit" class="btn btn-outline-light rounded-0">LOGIN</button>
                         </form>
+                        <br>
+                         <!-- DÙNG ĐỂ HIỂN THỊ LỖI -->
+                            @if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}<br>
+                                @endforeach
+                            <div>
+                            @endif
+                            
+                            @if(session('thongbao'))
+                                <div class="alert alert-danger">
+                                        {{session('thongbao')}}
+                                </div>
+                            @endif
+                        <!-- HIỂN THỊ LỖI -->
                     </div>
                 </div>
             </div>

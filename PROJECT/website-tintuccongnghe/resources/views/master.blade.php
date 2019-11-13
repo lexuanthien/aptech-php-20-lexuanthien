@@ -17,19 +17,19 @@
   </head>
   <body id="body">
     <nav class="navbar navbar-expand-md bg-dark sticky-top">
-      <a class="navbar-brand" href="#">
-        <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="70px">
-      </a>
+      <span style="color:white;letter-spacing: 5px; font-size: 13px;" class="navbar-brand ml-2">LE XUAN THIEN</span>
              
-      <ul class="nav ml-auto mr-3"> 
-        <div class="dropdown ">
+      <ul class="nav ml-auto"> 
+        <div class="dropdown mr-2">
           <a style="background-color:#343a40 !important; color: white;" href="#" class="btn dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-user"></i>
           </a>
           
-          <div class="dropdown-menu dropdown-menu-left">
-            <a class="dropdown-item" href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-            <a class="dropdown-item" href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            
+            <a class="dropdown-item"><i class="fa fa-fw fa-user"></i>{{ Auth::user()->name }}</a>
+            <a class="dropdown-item" href="{{ route('logout') }}"><i class="fa fa-fw fa-power-off"></i> Đăng Xuất</a>
+          
           </div>
         </div>
         </ul>

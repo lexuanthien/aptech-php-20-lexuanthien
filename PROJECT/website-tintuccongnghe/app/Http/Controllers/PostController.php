@@ -27,7 +27,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::get();
-        return view('admin.post.create', ['categories'=> $categories]);
+        return view('admin.post.create', ['categories' => $categories]);
     }
 
     /**
@@ -48,7 +48,7 @@ class PostController extends Controller
         $posts->so_like = 1;
 
         if ($request->hasfile('image')) {
-            $file = $request -> file('image');
+            $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
             $file->move('uploads/posts', $filename);
@@ -57,8 +57,8 @@ class PostController extends Controller
             return $request;
             $posts->image = '';
         }
-        $posts->save(); 
-        
+        $posts->save();
+
         return redirect()->route('posts.index');
     }
 
@@ -70,7 +70,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.post.show', ['posts'=>$post]);
+        return view('admin.post.show', ['posts' => $post]);
     }
 
     /**
@@ -82,7 +82,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::get();
-        return view('admin.post.edit', ['posts'=>$post, 'categories'=> $categories]);
+        return view('admin.post.edit', ['posts' => $post, 'categories' => $categories]);
     }
 
     /**
@@ -100,17 +100,17 @@ class PostController extends Controller
         $post->category_id  = $_POST['category_id'];
         $post->tin_hot = $_POST['news'];
         $post->slug = str_slug($_POST['title_edit']);
-        
-        
+
+
         if ($request->hasfile('image')) {
-            $file = $request -> file('image');
+            $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
             $file->move('uploads/posts', $filename);
             $post->image = $filename;
         }
 
-        $post->save(); 
+        $post->save();
 
         return redirect()->route('posts.index');
     }
@@ -125,5 +125,21 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect()->route('posts.index');
+    }
+    // Like
+    public function like(Request $request,  $id)
+    {
+        $post = Post::findOrFail($id);
+        if ($post !== null) {
+
+            $post->likes += 1;
+
+            $post->save();
+
+            return response()->json([
+                "success" => true,
+                "value" => $post->likes
+            ], 200);
+        }
     }
 }

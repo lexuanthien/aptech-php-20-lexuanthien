@@ -6,63 +6,168 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
 use Carbon\Carbon;
+use App\User;
+
+use Illuminate\Support\Facades\Auth;
 
 class WebsiteController extends Controller
 {
-    function TrangChu() {
+    function TrangChu()
+    {
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
 
         $category = Category::get();
-        
+
         $post = Post::get();
 
         return view('page_home.trangchu', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
     }
 
-    function TinTuc($id) {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh');
+    // LẤY DỮ LIỆU BẰNG SLUG TRUYÊN Ở ROUTE
+    function TinTuc($slug)
+    {
+        $dt = Carbon::now('Asia/Ho_Chi_Minh'); //THỜI GIAN
 
-        $category = Category::get();
+        $category = Category::get(); //MENU
 
-        $theloai = Category::where('id', '=', $id)->first();
+        $theloai = Category::where('slug', '=', $slug)->firstOrFail(); //SLUG NHẬP VÀO TRÊN ROUTE = SLUG DATA -> HIỂN THỊ
+        if ($theloai !== null) {
 
-        $post = Post::where('category_id','=', $id)->orderBy('created_at', 'desc')->paginate(5); //paginate(5) để hiển thị 5 tin trong 1 trang
+            $posts = $theloai->posts()->orderBy('created_at', 'desc')->paginate(5);
 
-        return view('page_home.trangtonghop', ['categories' => $category, 'theloaipost'=>$theloai, 'posts' => $post, 'time' => $dt]);
+            return view('page_home.trangtonghop', [
+                'time' => $dt,
+                'categories' => $category, 
+                'theloaipost' => $theloai, 
+                'posts' => $posts
+                ]);
+        }
     }
-    
-    function XemChiTiet($id) {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh');
 
-        $category = Category::get();
+    function XemChiTiet($slug)
+    {
+        $dt = Carbon::now('Asia/Ho_Chi_Minh'); //TIME
 
-        $post = Post::where('id', '=', $id)->first();
+        $category = Category::get(); //MENU
+
+        $post = Post::where('slug', '=', $slug)->with('category')->first();
+
+        // Tăng View
+        $post->views += 1;
+        $post->save();
+        //
 
         $postlienquan = Post::where('category_id', '=', $post->category_id)->take(3)->get();
-        
-       
-        $theloai = Category::where('id', '=', $id)->first();
 
-        return view('page_home.trangxemchitiet', ['categories' => $category, 'theloaipost'=>$theloai, 'posts' => $post, 'time' => $dt, 'tinlienquan' => $postlienquan]);
+
+        return view('page_home.trangxemchitiet', [
+            'categories' => $category,
+            'posts' => $post, 
+            'time' => $dt, 
+            'tinlienquan' => $postlienquan
+            ]);
     }
 
-    function Login() {
+    // LẤY DỮ LIỆU BẰNG ID TRUYÊN Ở ROUTE
+   
+    // function TinTuc($id) {
+    //     $theloai = Category::get();
+    //     $dt = Carbon::now('Asia/Ho_Chi_Minh');
+    //     $category = Category::where('id', '=', $id)->first();
+    //     $post = Post::where('category_id','=', $id)->orderBy('created_at', 'desc')->paginate(5);
+    //     return view('home.trangtonghop', ['categories' => $category, 'theloaipost'=>$theloai, 'posts' => $post, 'time' => $dt]);
+    // }
+    
+    // function XemChiTiet($id) {
+    //     $post = Post::where('id', '=', $id)->first();
+    //     $theloai = Category::get();
+    //     $dt = Carbon::now('Asia/Ho_Chi_Minh');
+    //     $category = Category::where('id', '=', $id)->first();
+    //     return view('home.trangxemchitiet', ['categories' => $category, 'theloaipost'=>$theloai, 'posts' => $post, 'time' => $dt]);
+    // }    
+
+    function getRegister()
+    {
+        $dt = Carbon::now('Asia/Ho_Chi_Minh'); //THỜI GIAN
+
+        $category = Category::get(); //MENU
+
+        $post = Post::get();    
+
+        return view('page_home.register', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
+    }
+    function postRegister(Request $request) {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role_id' => 3,
+            'password' => bcrypt($request->password),
+        ]);
+        if ($user)
+            return redirect()->route('login');
+    }
+
+    // LOGIN
+    function getLogin()
+    {
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
 
         $category = Category::get();
-        
+
         $post = Post::get();
 
         return view('page_home.login', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
     }
 
-    function Register() {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh');
+    function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ], [
+            'email.required' => 'Bạn chưa nhập Email.',
+            'password.required' => 'Bạn chưa nhập Password.'
+        ]);
 
-        $category = Category::get();
-        
-        $post = Post::get();
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        if (Auth::attempt($data)) {
+            return redirect()->route('trangchu');
+        } else {
+            return redirect()->route('login')->with('thongbao', 'Đăng Nhập Thất Bại: Sai Email hoặc Mật Khẩu');
+        }
+    }
 
-        return view('page_home.register', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
+    // ĐĂNG XUẤT
+    function Logout(Request $request) {
+        Auth::logout();
+        return redirect()->route('trangchu');
+    }
+
+    function __construct()
+    {
+        if(Auth::check()) {
+            view()->share('thanhvien', Auth::user());
+        }
+    }
+
+    // TÌM KIẾM
+    function TimKiem(Request $request) {
+        $dt = Carbon::now('Asia/Ho_Chi_Minh'); //TIME
+
+        $category = Category::get(); //MENU
+
+        $timkiem = $request->timkiem;
+
+        $post = Post::Where('title','like', "%$timkiem%")->orWhere('description','like', "%$timkiem%")->orWhere('slug','like', "%$timkiem%")->take(10)->paginate(5);
+
+        return view('page_home.search', [
+            'categories' => $category,
+            'time' => $dt, 
+            'posts' => $post, 
+            'timkiem' => $timkiem
+            ]);
     }
 }

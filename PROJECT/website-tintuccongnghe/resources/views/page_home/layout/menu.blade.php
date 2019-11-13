@@ -1,8 +1,9 @@
-<nav id="logoNavbar1" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    
+    <nav id="logoNavbar1" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container">
             <div class="">
             <a class="navbar-brand" href="{{ route('trangchu') }}">
-                <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="60px" width="60px">
+                <img id="hinhlogo" src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" width="60px">
             </a>
             </div>
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -16,12 +17,14 @@
                       
                     @foreach($categories->take(5) as $category)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('news', $category->id) }}">{{$category->name}}</a>
+                        <a class="nav-link" href="{{ route('news', $category->slug) }}">{{$category->name}}</a>
                     </li>
                     @endforeach 
                 </ul>
                 
-                <form id="search" method="get" action="#" class="nav-light">
+                <form action=" {{ route('timkiem') }}" method="get" id="search" class="nav-light">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                   <div class='row'>
                     <div class="col-12 d-flex">
                     <input type="search" class="form-control rounded-0" name="timkiem" id="timkiem" placeholder="Tìm kiếm...">
@@ -32,6 +35,7 @@
             </div>
         </div>
     </nav>
+
     <!--HẾT PHẦN LOGO + MENU-->    
     
     <!--PHẦN MENU 2-->
@@ -41,10 +45,7 @@
         <div class="row">
           <div class="d-none d-sm-block col-sm-12 col-md-8 ">
             <nav class="navbar navbar-expand-sm">
-              <ul id="listNavbar2" class="navbar-nav mr-auto">  
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">MỚI NHẤT</a>
-                        </li>
+              <ul id="listNavbar2" class="navbar-nav mr-auto"> 
                         <li class="nav-item">
                         <a class="nav-link" href="#">CỘNG ĐỒNG</a>
                         </li>
@@ -54,10 +55,25 @@
                         <li class="nav-item">
                         <a class="nav-link" href="#">LIÊN HỆ</a>
                         </li>
-                        <li class="nav-item ">
+                        <!-- <li class="nav-item ">
                         <a class="nav-link" href="#">JOIN/SIGN IN <i class="fas fa-sign-in-alt"></i></a>
-                        </li>
-                          
+                        </li> -->
+
+                    
+                          <li class="nav-item ">
+                            <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
+                          </li>
+                          <li class="nav-item ">
+                            <a class="nav-link" href="{{ route('register')}}">REGISTER</a>
+                          </li>
+                        
+                          <li class="nav-item ">
+                            <a class="nav-link" href=""></a>
+                          </li>
+                          <li class="nav-item ">
+                            <a class="nav-link" href="{{ route('dangxuat') }}">ĐĂNG XUẤT</a>
+                          </li>   
+
                 </ul>
             </nav>
           </div>
@@ -89,4 +105,15 @@
       </div>
     </div>
     </div>
-    
+    <script>
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+    document.getElementById("hinhlogo").style.width = "60px";
+  } else {
+    document.getElementById("hinhlogo").style.width = "30px";
+  }
+}
+</script>

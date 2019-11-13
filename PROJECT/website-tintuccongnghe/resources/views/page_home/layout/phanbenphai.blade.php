@@ -23,7 +23,7 @@
                 <!-- Catagory Widget -->
                 <ul class="catagory-widgets">
                      @foreach($categories as $category)
-                    <li><a href="{{ route('news', $category->id) }}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span><span style="letter-spacing: 2px;">{{ $category->name }}</span></a></li>
+                    <li><a href="{{ route('news', $category->slug) }}"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span><span style="letter-spacing: 2px;">{{ $category->name }}</span></a></li>
                     @endforeach
                 </ul>
             </div>

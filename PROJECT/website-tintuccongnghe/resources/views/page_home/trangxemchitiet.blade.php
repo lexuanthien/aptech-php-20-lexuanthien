@@ -1,33 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>{{ $posts->title }}</title>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/websitenews/css/style.css') }}">
-
-    <link rel="icon" href="{{ url('http://localhost:8000/websitenews/image/logo.jpg') }}">
-
-  </head>
-  <body id="body">
-    <!--PHẦN LOGO + MENU-->  
+    @extends('page_home.layout.head',['data'=> $posts])
+<body id="body">
+    <!--PHẦN LOGO + MENU-->
     @include('page_home.layout.menu')
 
-
     <!-- PHẦN NỘI DUNG -->
-
-    
-
-    <!-- ##### Breadcrumb Area Start ##### -->
     <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url('http://localhost:8000/websitenews/image/background.jpg');">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
@@ -41,9 +19,7 @@
             </div>
         </div>
     </section>
-    <!-- ##### Breadcrumb Area End ##### -->
 
-    <!-- ##### Breadcrumb Area Start ##### -->
     <div class="mag-breadcrumb py-5">
         <div class="container">
             <div class="row">
@@ -52,9 +28,9 @@
                         <ol class="breadcrumb">
                             <li><a style="font-size:12px; letter-spacing: 3px;  color: rgb(51, 128, 128);  font-weight: bold;" href="{{ route('trangchu') }}"><i class="fa fa-home" aria-hidden="true"></i> HOME <i class="fas fa-angle-double-right"></i> </a></li>
                             <li class="ml-2"><a style="font-size:12px; letter-spacing: 3px;  color: rgb(51, 128, 128);  font-weight: bold;">
-                            {{  $posts->category->name }} <i class="fas fa-angle-double-right"></i> </a></li>
+                                    {{ $posts->category->name }} <i class="fas fa-angle-double-right"></i> </a></li>
                             <li class="ml-2"><a style="font-size:12px; letter-spacing: 0.5px;  color: rgb(143, 156, 156);  font-weight: bold;"><i>{{ $posts->title }}</i></a></li>
-                           
+
                         </ol>
                     </nav>
                 </div>
@@ -66,59 +42,62 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-xl-8">
-                  <div class="post-details-content bg-white mb-30 p-30 box-shadow">
+                    <div class="post-details-content bg-white mb-30 p-30 box-shadow">
                         <div class="blog-content">
                             <div class="post-meta">
                                 <a href="#">{{$posts['created_at']->toDateString()}} / {{$posts['created_at']->diffForHumans()}}</a>
                                 <a href="archive.html">inews</a>
                             </div>
                             <h4 class="post-title">{{ $posts->title }}</h4>
-                            <!-- Post Meta -->
+
                             <div class="post-meta-2">
-                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
+                                <span class="mr-30"><i class="fa fa-eye" aria-hidden="true"></i> {{ $posts->views }}</span>
+                                <span id="btn-like"> <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+
+                                    <span id="like-value">{{ $posts->likes }}</span>
+                                </span>
+
+
+
                             </div>
                             <p><b>{{ $posts->description }}</b></p>
-                            <img height="300px" src="uploads/posts/{{$posts->image}}">
-                            <p>{{ $posts->image }}</p>
-
+                            <img height="300px" src="/uploads/posts/{{$posts->image}}">
                             <p>{!! $posts->content !!}</p>
 
                             <!-- Like Dislike Share -->
                             <div class="like-dislike-share my-5">
+                                <!-- <div id="fb-root"></div>
+                                <div class="fb-share-button" data-href="http://localhost:8000/show/a" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fshow%2F{{$posts->slug}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div> -->
                                 <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Share</a>
                                 <a href="#" class="twitter"><i class="fab fa-twitter"></i> Share on Twitter</a>
                             </div>
                             <hr>
                         </div>
-                  </div>
+                    </div>
 
-                  <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
-                        <!-- Section Title -->
+                    <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
                         <div class="section-heading">
-                            <h5>TIN TỨC HẬU LIÊN QUAN</h5>
+                            <h5>TIN TỨC LIÊN QUAN</h5>
                         </div>
 
                         <div class="row">
-                            <!-- Single Blog Post -->
                             @foreach($tinlienquan as $postlienquan)
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post style-4 mb-30">
                                     <div class="post-thumbnail">
-                                        <img src="uploads/posts/{{$postlienquan->image}}">
+                                        <img src="/uploads/posts/{{$postlienquan->image}}">
                                     </div>
                                     <div class="post-content">
                                         <a href="single-post.html" class="post-title">{{$postlienquan->title}}</a>
-                                        
+
                                     </div>
                                 </div>
                             </div>
                             @endforeach
                         </div>
-                  </div>
+                    </div>
 
-                  <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
+                    <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
                         <!-- Section Title -->
                         <div class="section-heading">
                             <h5>BÌNH LUẬN</h5>
@@ -128,27 +107,24 @@
                             <li class="single_comment_area">
                                 <!-- Comment Content -->
                                 <div>
-                                @foreach($posts->comments as $comment)
+                                    @foreach($posts->comments as $comment)
                                     <div>
-                                        <a style="color: rgb(75, 105, 23); font-weight: bold;font-size: 16x; letter-spacing: 3px;" >{{ $comment->user->name }} <span> / </span> {{ $comment->created_at }} </a>
+                                        <a style="color: rgb(75, 105, 23); font-weight: bold;font-size: 16x; letter-spacing: 3px;"> <span> / </span> {{ $comment->created_at }} </a>
                                         <p class="mb-4">{{ $comment->content_comment }}</p>
-                                        
+
                                     </div>
                                     <br>
-                                @endforeach    
+                                    @endforeach
                                 </div>
                             </li>
                         </ol>
                     </div>
 
-                    <!-- Post A Comment Area -->
                     <div class="post-a-comment-area bg-white mb-30 p-30 box-shadow clearfix">
-                        <!-- Section Title -->
                         <div class="section-heading">
                             <h5>VIẾT BÌNH LUẬN</h5>
                         </div>
 
-                        <!-- Reply Form -->
                         <div class="contact-form-area">
                             <form action="#" method="post">
                                 <div class="row">
@@ -162,7 +138,7 @@
                                         <textarea name="message" class="form-control" id="message" cols="30" rows="5" placeholder="Message" required></textarea>
                                     </div>
                                     <div class="col-12">
-                                      <button type="button" class="btn btn-success">Comment</button>
+                                        <button type="button" class="btn btn-success">Comment</button>
                                     </div>
                                 </div>
                             </form>
@@ -173,8 +149,8 @@
 
                 <div class="col-12 col-md-6 col-lg-5 col-xl-4">
                     <div class="sidebar-area bg-white mb-30 box-shadow">
-                      @include('page_home.layout.phanbenphai')
-                    </div>  
+                        @include('page_home.layout.phanbenphai')
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,5 +160,37 @@
 
     <!-- PHẦN FOOTER -->
     @include('page_home.layout.footer')
-  </body>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            $("#btn-like").click(function(e) {
+                console.log("vao roi ne");
+
+                e.preventDefault();
+
+                $.ajax({
+
+                    type: 'POST',
+
+                    url: '/api/posts/like/{{$posts->id}}',
+
+                    success: function(data) {
+                        if (data.success) {
+
+                            $("#like-value").text(data.value)
+                            console.log("Like thanh cong");
+
+                        }
+
+                    }
+
+                });
+
+
+
+            });
+        }
+    </script>
+</body>
+
 </html>

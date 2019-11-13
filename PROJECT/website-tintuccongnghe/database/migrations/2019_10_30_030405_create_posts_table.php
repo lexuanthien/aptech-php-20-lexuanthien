@@ -21,8 +21,9 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('category_id')->foreign('category_id')->references('id')->on('categories');
             $table->string('tin_hot');
             $table->mediumText('image')->nullable();
-            $table->string('slug');
-            $table->integer('so_like');
+            $table->string('slug')->primary();
+            $table->integer('likes')->default(0)->comment("số lượt yêu thích");
+            $table->integer('views')->default(0)->comment("số lượt xem");
             $table->timestamps();
         });
     }

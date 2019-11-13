@@ -5,7 +5,7 @@
       <hr>
       <div class="mx-4">
         <form action="{{ route('users.create')}}" method="GET">
-            <button type="submit" class="btn btn-info rounded-0 font-weight-bold">THÊM CHỨC NĂNG MỚI CHO USER</button>
+            <button type="submit" class="btn btn-info rounded-0 font-weight-bold">TẠO USER MỚI</button>
         </form>  
       </div>
       <div class="mx-4">

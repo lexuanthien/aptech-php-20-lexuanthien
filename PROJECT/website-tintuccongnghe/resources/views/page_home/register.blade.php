@@ -37,18 +37,20 @@
                             <h5>Let's Join Us!</h5>
                         </div>
 
-                        <form action="index.html" method="post">
+                        <form action="{{ route('register.post') }}" method="post">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                             <div class="form-group">
-                                <input type="text" class="form-control" id="name" placeholder="Name">
+                                <input type="text" class="form-control" name="name" placeholder="Name">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" placeholder="Confirm Password">
+                                <input type="password" class="form-control" name="password" placeholder="Confirm Password">
                             </div>
                             
                             <button id="nutlogin" type="submit" class="btn btn-outline-light rounded-0">REGISTER</button>

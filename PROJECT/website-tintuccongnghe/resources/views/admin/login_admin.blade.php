@@ -14,14 +14,14 @@
 
     <title>Đăng Nhập Vào Trang Admin</title>
     
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/webtintuc/css/login_admin.css') }}">
+    <link rel="stylesheet" href="{{ url('http://localhost:8000/websitenews/css/login_admin.css') }}">
 </head>
 <body>
     
 <div id="dangnhap" class="container">
     <div class="row">
         <div class="col-12">
-            <h1 style="letter-spacing: 0px;">ADMIN</h1>      
+            <h1 style="letter-spacing: 3px;">ADMIN</h1>      
             <form action="{{ route('login.store') }}" method="POST" class="mt-3">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -51,8 +51,15 @@
                 </div>
             @endif
             <!-- HIỂN THỊ LỖI -->
-            
+            <div class="row mt-4">
+                        <div style="letter-spacing: 3px; font-size: 13px;" class="col-12 d-flex align-items-center">
+                            <span>TO REGISTER NEW ACCOUNT<span>→ </span> </span>
+                            <a class="ml-2" href="/admin/register"><button id="clickhere" style="color:white !important; border: 1px solid;" type="submit" class="btn btn-outline rounded-0"> ĐĂNG KÝ</button></a>
+                        </div>
+            </div>
+
         </div>
+       
     </div>
 </div>
 </body>

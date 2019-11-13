@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <title>Website Tin Tức Công Nghệ Hàng Đầu - Tin Tức Mỗi Ngày </title>
+    <title>Website Tin Tức Công Nghệ Hàng Đầu - Tin Tức Mỗi Ngày</title>
 
     <link rel="icon" href="{{ url('http://localhost:8000/websitenews/image/logo.jpg') }}">
 
@@ -47,7 +47,7 @@
                         <img src="uploads/posts/{{ $moinhat->image }}" alt="">
                     </div>
                     <div class="post-content">
-                        <a href="{{ route('xembaiviet', $moinhat->id) }}" class="post-title">{{ $moinhat->title}}</a>
+                        <a href="{{ route('xembaiviet', $moinhat->slug) }}" class="post-title">{{ $moinhat->title}}</a>
                         <a class="categorymoinhat">{{ $moinhat->category->name}}</a>
                     </div>
 
@@ -72,7 +72,7 @@
                         <img src="uploads/posts/{{ $tindanhgia->image }}" alt="">
                     </div>
                     <div class="post-content">
-                        <a href="{{ route('xembaiviet', $tindanhgia->id) }}" class="post-title">{{ $tindanhgia->title }}</a>
+                        <a href="{{ route('xembaiviet', $tindanhgia->slug) }}" class="post-title">{{ $tindanhgia->title }}</a>
                         <a class="categorymoinhat">{{$tindanhgia['created_at']->toDateString()}}</a>
                     </div>
 
@@ -97,7 +97,7 @@
                         <img src="uploads/posts/{{ $tincongnghe->image }}" alt="">
                     </div>
                     <div class="post-content">
-                        <a href="{{ route('xembaiviet', $tincongnghe->id) }}" class="post-title">{{ $tincongnghe->title }}</a>
+                        <a href="{{ route('xembaiviet', $tincongnghe->slug) }}" class="post-title">{{ $tincongnghe->title }}</a>
                         <a class="categorymoinhat">{{$tincongnghe['created_at']->toDateString()}}</a>
                     </div>
 
@@ -144,10 +144,12 @@
                                 @endif
                             >
                             <?php $i++; ?>
-                                <img id="image_carousel" src="uploads/posts/{{ $tin['image'] }}" alt="Los Angeles">
-                                <div class="carousel-caption text-left">
-                                    <a href="{{ route('xembaiviet', $tin->id) }}" class= "title_carousel">{{ $tin['title'] }}</a>
-                                    <p><a class="btn btn-outline-info rounded-0" style=" font-size: 11px; letter-spacing: 3px;" href="{{ route('xembaiviet', $tin->id) }}"  role="button">CONTINUE READING</a></p>
+                                <div class="darken-overlay">
+                                    <img id="image_carousel" src="uploads/posts/{{ $tin['image'] }}" alt="Los Angeles">
+                                </div>
+                                <div class="carousel-caption text-left darken-pseudo darken-with-text">
+                                    <a href="{{ route('xembaiviet', $tin->slug) }}" id= "titlecarousel">{{ $tin['title'] }}</a>
+                                    <p><a class="btn btn-outline-info rounded-0" style=" font-size: 11px; letter-spacing: 3px;" href="{{ route('xembaiviet', $tin->slug) }}"  role="button">CONTINUE READING</a></p>
                                 </div>
                             </div>
                             @endforeach
@@ -183,7 +185,7 @@
                             <div class="single-featured-post">
                                 <!-- Thumbnail -->
                                 <div class="post-thumbnail mb-50">
-                                    <a href="{{ route('xembaiviet', $post_doc->id) }}"> <img src="uploads/posts/{{ $post_doc['image'] }}" alt=""></a>    
+                                    <a href="{{ route('xembaiviet', $post_doc->slug) }}"> <img src="uploads/posts/{{ $post_doc['image'] }}" alt=""></a>    
                                 </div>
                                 <!-- Post Contetnt -->
                                 <div class="post-content">
@@ -191,14 +193,14 @@
                                         <a >{{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a>
                                         <a >inews</a>
                                     </div>
-                                    <a  href="{{ route('xembaiviet', $post_doc->id) }}" class="post-title">{{$post_doc['title']}}</a>
+                                    <a  href="{{ route('xembaiviet', $post_doc->slug) }}" class="post-title">{{$post_doc['title']}}</a>
                                     <p>{{$post_doc['description']}}</p>
                                 </div>
                                 <!-- Post Share Area -->
                                 <div class="post-share-area d-flex align-items-center justify-content-between">
                                     <!-- Post Meta -->
                                     <div class="post-meta pl-3">
-                                        <a href="{{ route('xembaiviet', $post_doc->id) }}" class="btn" role="submit"><b>CONTINUE READING</b></a>
+                                        <a href="{{ route('xembaiviet', $post_doc->slug) }}" class="btn" role="submit"><b>CONTINUE READING</b></a>
                                     </div>
                                     <!-- Share Info -->
                                     <div class="share-info">
@@ -224,11 +226,11 @@
                                     <!-- Single Blog Post -->
                                     <div class="single-blog-post d-flex style-3 mb-4">
                                         <div class="post-thumbnail">
-                                            <a href="{{ route('xembaiviet', $tin->id) }}"> <img src="uploads/posts/{{ $tin->image}}" alt=""></a>
+                                            <a href="{{ route('xembaiviet', $tin->slug) }}"> <img src="uploads/posts/{{ $tin->image}}" alt=""></a>
                                            
                                         </div>
                                         <div class="post-content">
-                                            <a href="{{ route('xembaiviet', $tin->id) }}" class="post-cate">{{$tin['title']}}</a>
+                                            <a href="{{ route('xembaiviet', $tin->slug) }}" class="post-cate">{{$tin['title']}}</a>
                                         </div>
                                     </div>
 

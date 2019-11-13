@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>TRANG TIN {{ $theloaipost->name }}</title>
+    <title>Website Tin Tức Công Nghệ Hàng Đầu - Tin Tức Mỗi Ngày</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,21 +24,6 @@
 
     <!-- PHẦN NỘI DUNG -->
 
-    
-
-    <!-- ##### Breadcrumb Area Start ##### -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url('http://localhost:8000/websitenews/image/background.jpg');">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content">
-                        <h2 style="letter-spacing: 10px;">{{ $theloaipost->name }}</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <div class="mag-breadcrumb py-5">
         <div class="container">
             <div class="row">
@@ -47,9 +32,9 @@
                         <ol class="breadcrumb">
                             <li><a style="font-size:12px; letter-spacing: 3px;  color: rgb(51, 128, 128);  font-weight: bold;" href="{{ route('trangchu') }}"><i class="fa fa-home" aria-hidden="true"></i> HOME <i class="fas fa-angle-double-right"></i> </a></li>
                             <li class="mx-2"><a style="font-size:12px; letter-spacing: 3px;  color: rgb(51, 128, 128);  font-weight: bold;">
-                            {{$theloaipost->name}}<i class="fas fa-angle-double-right ml-2"></i> </a></li>
+                            TÌM KIẾM<i class="fas fa-angle-double-right ml-2"></i> </a></li>
                             <li><a style="font-size:12px; letter-spacing: 0.5px;  color: rgb(143, 156, 156);  font-weight: bold;"><i>
-                            Tin Tức Xuyên Lục Địa</i></a></li>
+                            {{ $timkiem }}</i></a></li>
                             
                         </ol>
                     </nav>
