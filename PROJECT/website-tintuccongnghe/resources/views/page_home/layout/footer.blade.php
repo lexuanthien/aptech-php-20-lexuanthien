@@ -9,7 +9,7 @@
           <div id="about" class="col-sm-9 col-md-6">
                 <p id="FAMOUS">ABOUT</p>  
                 <b>I'VE NEVER SOUGHT SUCCESS IN ORDER TO GET FAME AND MONEY. IT'S THE TALENT AND THE PASSION THAT COUNT IN SUCCESS...</b><br>
-                <b><i>" Thành công lớn nhất là đứng dậy sau mỗi lần bị vấp ngã! "</i></b>
+                <!-- <b><i>" Thành công lớn nhất là đứng dậy sau mỗi lần bị vấp ngã! "</i></b> -->
           </div>
           <div class="d-none d-sm-block col-sm-3 col-md-3">
                 <ul id="icon" class="list-unstyled m-2">

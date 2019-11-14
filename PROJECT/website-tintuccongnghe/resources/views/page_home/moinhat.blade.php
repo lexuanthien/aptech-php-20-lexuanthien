@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Website Tin Tức Công Nghệ Hàng Đầu - Tin Tức Mỗi Ngày</title>
+    <title>Tin Mới Nhất</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +24,21 @@
 
     <!-- PHẦN NỘI DUNG -->
 
+    
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url('http://localhost:8000/websitenews/image/background.jpg');">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2 style="letter-spacing: 10px;">TIN MỚI NHẤT</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="mag-breadcrumb py-5">
         <div class="container">
             <div class="row">
@@ -32,9 +47,9 @@
                         <ol class="breadcrumb">
                             <li><a style="font-size:12px; letter-spacing: 3px;  color: rgb(51, 128, 128);  font-weight: bold;" href="{{ route('trangchu') }}"><i class="fa fa-home" aria-hidden="true"></i> HOME <i class="fas fa-angle-double-right"></i> </a></li>
                             <li class="mx-2"><a style="font-size:12px; letter-spacing: 3px;  color: rgb(51, 128, 128);  font-weight: bold;">
-                            TÌM KIẾM<i class="fas fa-angle-double-right ml-2"></i> </a></li>
+                            MỚI NHẤT<i class="fas fa-angle-double-right ml-2"></i> </a></li>
                             <li><a style="font-size:12px; letter-spacing: 0.5px;  color: rgb(143, 156, 156);  font-weight: bold;"><i>
-                            {{ $timkiem }}</i></a></li>
+                            Tin Tức Xuyên Lục Địa</i></a></li>
                             
                         </ol>
                     </nav>
@@ -49,33 +64,34 @@
                 <div class="col-12 col-xl-8">
                     <div class="archive-posts-area bg-white p-30 mb-30 box-shadow">
 
-                        <!-- Single Catagory Post -->
-                        @foreach($posts as $tin)
+                        
+                    @foreach($posts as $tin)
                         <div class="single-catagory-post d-flex flex-wrap">
                             <!-- Thumbnail -->
                             <div class="post-thumbnail bg-img">
-                              <img id="image" src="/uploads/posts/{{$tin->image}}">
+                            <a href="{{ route('xembaiviet',$tin->slug)}}"><img  id="image" src="/uploads/posts/{{$tin->image}}"></a>
                             </div>
 
                             <!-- Post Contetnt -->
                             <div class="post-content">
                                 <div class="post-meta">
                                     <a href="#">{{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a>
-                                    <a href="archive.html">inews</a>
+                                    <a href="">inews</a>
                                 </div>
-                                <a href="{{ route('xembaiviet', $tin->slug) }}" class="post-title">{{ $tin->title }}</a>
+                                <a href="{{ route('xembaiviet', $tin->slug)}}" class="post-title">{{ $tin->title }}</a>
                                 <!-- Post Meta -->
                                 <div class="post-meta-2">
-                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
+                                    <a href="#"><i class="fa fa-eye mr-1" aria-hidden="true"></i> {{ $tin->views }}</a>
+                                    <a href="#"><i class="fas fa-thumbs-up  mr-1"></i> {{ $tin->likes }}</a>
                                 </div>
                                 <p>{{ $tin->description}}</p>
                             </div>
                         </div>
-                        @endforeach
-                        <!-- Pagination -->
-                        {{ $posts->links()}} 
+                    @endforeach
+
+                    {{ $posts->links()}}  
+
+                        
                     </div>
                 </div>
 

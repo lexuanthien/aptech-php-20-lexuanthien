@@ -45,6 +45,8 @@ Route::get('home', 'WebsiteController@TrangChu')->name('trangchu');
 Route::get('news/{slug}.html', 'WebsiteController@TinTuc')->name('news');
 Route::get('show/{slug}.html', 'WebsiteController@XemChiTiet')->name('xembaiviet');
 
+Route::get('tinmoinhat', 'WebsiteController@MoiNhat')->name('moinhat');
+
 
 Route::get('login', 'WebsiteController@getLogin')->name('login');
 Route::post('login', 'WebsiteController@postLogin')->name('login.post');
@@ -54,5 +56,9 @@ Route::get('register', 'WebsiteController@getRegister')->name('register');
 Route::post('register', 'WebsiteController@postRegister')->name('register.post');
 
 Route::get('timkiem', 'WebsiteController@TimKiem')->name('timkiem');
+
+Route::post('comment/{id}', 'CommentController@store')->name('comment');
+
+
 
 

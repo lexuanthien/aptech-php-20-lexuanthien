@@ -12,7 +12,7 @@
                 <div class="col-12">
                     <div class="breadcrumb-content">
                         <h2 style="letter-spacing: 10px;">{{ $posts->category->name }}</h2>
-                        <h6 style="letter-spacing: 3px; color:white;">"{{ $posts->title }}"</h6>
+                        <h6 style="letter-spacing: 1px; color:white;">"{{ $posts->title }}"</h6>
 
                     </div>
                 </div>
@@ -43,34 +43,34 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-xl-8">
                     <div class="post-details-content bg-white mb-30 p-30 box-shadow">
-                        <div class="blog-content">
+                        <div>
                             <div class="post-meta">
                                 <a href="#">{{$posts['created_at']->toDateString()}} / {{$posts['created_at']->diffForHumans()}}</a>
                                 <a href="archive.html">inews</a>
                             </div>
-                            <h4 class="post-title">{{ $posts->title }}</h4>
+                            <h3 class="post-title"><b>{{ $posts->title }}</b></h3>
 
                             <div class="post-meta-2">
-                                <span class="mr-30"><i class="fa fa-eye" aria-hidden="true"></i> {{ $posts->views }}</span>
+                                <!-- <span class="mr-30"><i class="fa fa-eye" aria-hidden="true"></i> {{ $posts->views }}</span>
                                 <span id="btn-like"> <i class="fa fa-thumbs-up" aria-hidden="true"></i>
 
                                     <span id="like-value">{{ $posts->likes }}</span>
+                                </span> -->
+
+                                <button style="font-size: 10px; letter-spacing: 1px;" type="button" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View {{ $posts->views }}</button>
+
+                                <span class="btn btn-danger ml-2" style=" font-size: 10px; letter-spacing: 1px;" id="btn-like"> <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+
+                                    <span id="like-value"> Thích {{ $posts->likes }}</span>
                                 </span>
 
-
-
+                                <button style="font-size: 10px; letter-spacing: 1px;color:white; background-color: #4167b2;" type="button" class="btn ml-2"><i class="fas fa-share-square"></i> Chia sẻ</button>
                             </div>
+                            <hr>
+
                             <p><b>{{ $posts->description }}</b></p>
-                            <img height="300px" src="/uploads/posts/{{$posts->image}}">
+                            <img src="/uploads/posts/{{$posts->image}}">
                             <p>{!! $posts->content !!}</p>
-
-                            <!-- Like Dislike Share -->
-                            <div class="like-dislike-share my-5">
-                                <!-- <div id="fb-root"></div>
-                                <div class="fb-share-button" data-href="http://localhost:8000/show/a" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fshow%2F{{$posts->slug}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div> -->
-                                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> Share</a>
-                                <a href="#" class="twitter"><i class="fab fa-twitter"></i> Share on Twitter</a>
-                            </div>
                             <hr>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                                         <img src="/uploads/posts/{{$postlienquan->image}}">
                                     </div>
                                     <div class="post-content">
-                                        <a href="single-post.html" class="post-title">{{$postlienquan->title}}</a>
+                                        <a href="{{ route('xembaiviet', $postlienquan->slug) }}" class="post-title">{{$postlienquan->title}}</a>
 
                                     </div>
                                 </div>
@@ -102,15 +102,16 @@
                         <div class="section-heading">
                             <h5>BÌNH LUẬN</h5>
                         </div>
+                       
 
-                        <ol class="m-4">
+                        <ol>
                             <li class="single_comment_area">
                                 <!-- Comment Content -->
                                 <div>
                                     @foreach($posts->comments as $comment)
                                     <div>
-                                        <a style="color: rgb(75, 105, 23); font-weight: bold;font-size: 16x; letter-spacing: 3px;"> <span> / </span> {{ $comment->created_at }} </a>
-                                        <p class="mb-4">{{ $comment->content_comment }}</p>
+                                        <a style="color: rgb(75, 105, 23); font-weight: bold;font-size: 16x; letter-spacing: 2px;">{{ $comment->user->name }}<span> / </span> {{ $comment->created_at }} </a>
+                                        <p>{{ $comment->content_comment }}</p>
 
                                     </div>
                                     <br>
@@ -124,25 +125,30 @@
                         <div class="section-heading">
                             <h5>VIẾT BÌNH LUẬN</h5>
                         </div>
+                        @guest
+                            <p>Đăng nhập hoặc đăng ký để viết bình luận nhé !</p>
 
+                            <div class="d-flex mt-3">
+                                <a  id="dangky" href="{{ route('login') }}" class="btn btn-light rounded-0 mag-btn w-50 mr-3">LOGIN</a>
+                                <a  id="dangky" href="{{ route('register')}}" class="btn btn-light rounded-0 mag-btn w-50 ml-3">REGISTER</a>
+                            </div>
+                            
+                        @else
                         <div class="contact-form-area">
-                            <form action="#" method="post">
+                           
+                            <form action="{{ route('comment', $posts-> id)}}" method="post">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                                    </div>
-                                    <div class="col-12 my-3">
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="5" placeholder="Message" required></textarea>
+                                    <div class="col-12 mb-3">
+                                        <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Message" required></textarea>
                                     </div>
                                     <div class="col-12">
-                                        <button type="button" class="btn btn-success">Comment</button>
+                                        <button type="submit" class="btn btn-success">Comment</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+                        @endguest
                     </div>
 
                 </div>

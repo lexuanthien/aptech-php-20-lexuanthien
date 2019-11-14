@@ -1,18 +1,20 @@
     
-    <nav id="logoNavbar1" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-        <div class="container">
-            <div class="">
+    <nav id="logoNavbar1" class="navbar navbar-expand-md sticky-top">
+        <div class="container-fluid">
+            
             <a class="navbar-brand" href="{{ route('trangchu') }}">
-                <img id="hinhlogo" src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" width="60px">
+                <img id="hinhlogo" src="{{ url('http://localhost:8000/websitenews/image/inews.png') }}">
             </a>
-            </div>
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul id="listNavbar1" class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active d-none d-md-block" href="{{ route('trangchu') }}"><i class="fas fa-home fa-lg pb-2"></i></a>
+                        <a class="nav-link active d-none d-md-block" href="{{ route('trangchu') }}"><i class="fas fa-home fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active d-none d-md-block" href="{{ route('moinhat') }}">MỚI NHẤT</a>
                     </li>
                       
                     @foreach($categories->take(5) as $category)
@@ -22,16 +24,38 @@
                     @endforeach 
                 </ul>
                 
-                <form action=" {{ route('timkiem') }}" method="get" id="search" class="nav-light">
+                <form action=" {{ route('timkiem') }}" method="get" id="search">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                  <div class='row'>
-                    <div class="col-12 d-flex">
-                    <input type="search" class="form-control rounded-0" name="timkiem" id="timkiem" placeholder="Tìm kiếm...">
-                    <button id="nuttimkiem" type="submit" class="btn"><i class="fa fa-search fa-lg" aria-hidden="true"></i></button>
+                    <div class="search-box">
+                    <input class="search-txt" type="search" name="timkiem" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <!-- <a class="search-btn" href="" type="submit" name="timkiem" >
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </a> -->
                     </div>
-                  </div>  
                 </form>
+
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="{{ route('login') }}" id="navbardrop" data-toggle="dropdown">
+                    <i class="fas fa-user-circle fa-lg mt-1"></i>
+                  </a>
+                  @guest
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" href="{{ route('login') }}" alt="Login"><i class="fas fa-sign-in-alt"></i></a>
+                    <a class="dropdown-item" href="{{ route('register')}}"><i class="fas fa-user-edit"></i></a>
+                  </div>
+                  @else
+                  <div class="dropdown-content">
+                    <a href="#" data-toggle="tooltip" data-placement="left" title=" Username - {{ Auth::user()->name }} !"><i class="fas fa-id-card"></i></a> 
+                    <!-- tooltip để hiển thị thông tin khi chỉ chuột vào -->
+                    <a class="dropdown-item" href="{{ route('dangxuat') }}"><i class="fas fa-sign-out-alt"></i></a>
+                  </div>
+                  @endguest
+                </li>
+                            
+                
+    
             </div>
         </div>
     </nav>
@@ -39,11 +63,10 @@
     <!--HẾT PHẦN LOGO + MENU-->    
     
     <!--PHẦN MENU 2-->
-    
-    <div id="phanmenu2">
+    <!-- <div class="container-fluid" style="background-color:  rgb(91, 121, 43);">
       <div class="container">
         <div class="row">
-          <div class="d-none d-sm-block col-sm-12 col-md-8 ">
+        <div class="d-none d-sm-block col-sm-12 col-md-8 ">
             <nav class="navbar navbar-expand-sm">
               <ul id="listNavbar2" class="navbar-nav mr-auto"> 
                         <li class="nav-item">
@@ -55,27 +78,24 @@
                         <li class="nav-item">
                         <a class="nav-link" href="#">LIÊN HỆ</a>
                         </li>
-                        <!-- <li class="nav-item ">
-                        <a class="nav-link" href="#">JOIN/SIGN IN <i class="fas fa-sign-in-alt"></i></a>
-                        </li> -->
-
-                    
+                      @guest
                           <li class="nav-item ">
                             <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
                           </li>
                           <li class="nav-item ">
                             <a class="nav-link" href="{{ route('register')}}">REGISTER</a>
                           </li>
-                        
+                      @else  
                           <li class="nav-item ">
-                            <a class="nav-link" href=""></a>
+                            <a class="nav-link" href="">{{ Auth::user()->name }}</a>
                           </li>
                           <li class="nav-item ">
                             <a class="nav-link" href="{{ route('dangxuat') }}">ĐĂNG XUẤT</a>
-                          </li>   
-
+                          </li>
+                      @endguest
                 </ul>
             </nav>
+
           </div>
           <div class="col-6 d-none d-md-block col-md-4">
               <nav class="navbar navbar-expand-sm navbar-dark justify-content-end">
@@ -101,19 +121,25 @@
                 </ul>
               </nav>
           </div>
-        </div>
       </div>
-    </div>
-    </div>
-    <script>
+      </div>
+    </div> -->
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<script>
 
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
-    document.getElementById("hinhlogo").style.width = "60px";
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("hinhlogo").style.width = "35px";
   } else {
-    document.getElementById("hinhlogo").style.width = "30px";
+    document.getElementById("hinhlogo").style.width = "50px";
   }
 }
 </script>

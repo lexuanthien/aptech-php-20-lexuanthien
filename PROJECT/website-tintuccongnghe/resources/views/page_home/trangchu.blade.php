@@ -44,7 +44,7 @@
                 <div class="single-blog-post d-flex">
 
                     <div class="post-thumbnail">
-                        <img src="uploads/posts/{{ $moinhat->image }}" alt="">
+                    <a href="{{ route('xembaiviet', $moinhat->slug) }}"><img src="uploads/posts/{{ $moinhat->image }}" alt=""></a>
                     </div>
                     <div class="post-content">
                         <a href="{{ route('xembaiviet', $moinhat->slug) }}" class="post-title">{{ $moinhat->title}}</a>
@@ -69,7 +69,7 @@
                 <div class="single-blog-post d-flex">
 
                     <div class="post-thumbnail">
-                        <img src="uploads/posts/{{ $tindanhgia->image }}" alt="">
+                    <a href="{{ route('xembaiviet', $tindanhgia->slug) }}"><img src="uploads/posts/{{ $tindanhgia->image }}" alt=""></a>
                     </div>
                     <div class="post-content">
                         <a href="{{ route('xembaiviet', $tindanhgia->slug) }}" class="post-title">{{ $tindanhgia->title }}</a>
@@ -94,7 +94,7 @@
                 <div class="single-blog-post d-flex">
 
                     <div class="post-thumbnail">
-                        <img src="uploads/posts/{{ $tincongnghe->image }}" alt="">
+                    <a href="{{ route('xembaiviet', $tincongnghe->slug) }}"><img src="uploads/posts/{{ $tincongnghe->image }}" alt=""></a>
                     </div>
                     <div class="post-content">
                         <a href="{{ route('xembaiviet', $tincongnghe->slug) }}" class="post-title">{{ $tincongnghe->title }}</a>
@@ -145,7 +145,7 @@
                             >
                             <?php $i++; ?>
                                 <div class="darken-overlay">
-                                    <img id="image_carousel" src="uploads/posts/{{ $tin['image'] }}" alt="Los Angeles">
+                                    <img id="image_carousel" src="uploads/posts/{{ $tin->image }}" alt="Los Angeles">
                                 </div>
                                 <div class="carousel-caption text-left darken-pseudo darken-with-text">
                                     <a href="{{ route('xembaiviet', $tin->slug) }}" id= "titlecarousel">{{ $tin['title'] }}</a>
@@ -200,18 +200,7 @@
                                 <div class="post-share-area d-flex align-items-center justify-content-between">
                                     <!-- Post Meta -->
                                     <div class="post-meta pl-3">
-                                        <a href="{{ route('xembaiviet', $post_doc->slug) }}" class="btn" role="submit"><b>CONTINUE READING</b></a>
-                                    </div>
-                                    <!-- Share Info -->
-                                    <div class="share-info">
-                                        <a href="#" class="sharebtn"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
-                                        <!-- All Share Buttons -->
-                                        <div class="all-share-btn d-flex">
-                                            <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                            <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                            <a href="#" class="google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                            <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                        </div>
+                                        <a href="{{ route('xembaiviet', $post_doc->slug) }}" class="btn" role="submit">CONTINUE READING</a>
                                     </div>
                                 </div>
 

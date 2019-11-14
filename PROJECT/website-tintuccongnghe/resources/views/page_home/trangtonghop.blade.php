@@ -69,39 +69,28 @@
                         <div class="single-catagory-post d-flex flex-wrap">
                             <!-- Thumbnail -->
                             <div class="post-thumbnail bg-img">
-                              <img id="image" src="/uploads/posts/{{$tin->image}}">
+                            <a href="{{ route('xembaiviet', $tin->slug) }}"><img  id="image" src="/uploads/posts/{{$tin->image}}"></a>
                             </div>
 
                             <!-- Post Contetnt -->
                             <div class="post-content">
                                 <div class="post-meta">
                                     <a href="#">{{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a>
-                                    <a href="archive.html">inews</a>
+                                    <a href="">inews</a>
                                 </div>
                                 <a href="{{ route('xembaiviet', $tin->slug) }}" class="post-title">{{ $tin->title }}</a>
                                 <!-- Post Meta -->
                                 <div class="post-meta-2">
-                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
+                                    <a href="#"><i class="fa fa-eye mr-1" aria-hidden="true"></i> {{ $tin->views }}</a>
+                                    <a href="#"><i class="fas fa-thumbs-up  mr-1"></i> {{ $tin->likes }}</a>
                                 </div>
                                 <p>{{ $tin->description}}</p>
                             </div>
                         </div>
                         @endforeach
                         <!-- Pagination -->
-                        <div class="row">
-                            <div id="phantrang"> {{$posts->links()}} </div>
-                        </div>
-        
-                        <nav>
-                          <ul class="pagination">
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="ti-angle-right"></i></a></li>
-                          </ul>
-                        </nav>
+                        {{ $posts->links()}} 
+                        
                     </div>
                 </div>
 

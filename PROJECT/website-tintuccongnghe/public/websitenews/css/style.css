@@ -1,7 +1,10 @@
 /* PHẦN MENU + LOGO */
 #logoNavbar1 {
   background-color: brown !important;
-  height: auto;
+}
+
+#hinhlogo {
+  width: 50px;
 }
 
 
@@ -11,37 +14,115 @@
   letter-spacing: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  font-size: 14px;
-  border-right: 1px solid #f4f4f4;
+  font-size: 13px;
+  border-right: 1.5px solid #f4f4f4;
 }
 #listNavbar1 li a:hover {
-  color: rgb(37, 78, 78) !important;
+  color: #2f3640 !important;
 }
 
+
+.dropdown {
+  margin-left: 50px;
+}
+
+.dropdown-toggle {
+  color: white !important;
+  /* padding-left: 20px;
+  padding-right: 20px;
+  border-left: 2px solid #f4f4f4; */
+}
+.dropdown-toggle:hover {
+  color: #2f3640 !important;
+}
+
+.dropdown a {
+  color: #2f3640 ;
+  
+}
+.dropdown-content {
+  position: absolute;
+  background: #2f3640 !important;
+  min-width: 50px !important;
+  width: 40px !important;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-content a{
+ text-align: center !important;
+ padding: 2px;
+ border-radius: 20% 20%;
+ color: #e84118 !important;
+}
+
+.dropdown-content a:hover{
+  background-color: #2f3640 !important;
+  color: white !important;
+ }
+
+.dropdown-content::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #2f3640 !important;
+  position: absolute;
+  top:-5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+
+.search-box {
+  height: 35px;
+  background-color: #2f3640;
+  border-radius: 40px;
+  padding: 10px;
+}
+
+.search-btn {
+  color: #e84118;
+  width:35px;
+  height: 10px;
+  float: right;
+  background-color: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #2f3640;
+}
+
+.search-btn:hover {
+  color: white;
+}
+
+.search-txt {
+  border:none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 14px;
+  transition: 0.4s;
+  line-height: 15px;
+  width: 130px;
+  padding-left: 10px;
+}
 #search {
   color: white;
-  padding-left: 50px;
+  padding-left: 30px;
 }
 
-#timkiem {
-  height: 30px;
-  width: auto;
-  color: block;
-  font-size: 14px;
-}
-
-#nuttimkiem {
-  color: white;
-}
-#nuttimkiem:hover {
-  color: #21caca;
-}
 /* HẾT NAVBAR1 */
 
 /* MENU 2 */
-#phanmenu2 {
-  background-color: rgb(125, 155, 75) !important;
-}
 #listNavbar2 li a {
   color: #f4f4f4 !important;
   font-size: 12px;
@@ -90,7 +171,34 @@ li.dropdown {
   display: block;
 }
 /* HẾT MENU 2 */
-
+.pagination {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination li {
+  margin: 5px 5px;
+  display: inline-block;
+  width: 40px;
+  padding: 5px;
+  background-color: #e1e2e4;
+  line-height: 40px;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+  border-radius: 5px 5px 5px 5px;
+  
+}
+.pagination li:hover {
+  color: #e74c3d;
+}
+.active {
+  color: #e74c3d !important;
+}
+.prev {
+  border-radius: 30px 0 0 30px;
+}
 /* footer */
 
 #footer {
@@ -150,10 +258,11 @@ li.dropdown {
   color: #1a1a1a;
 }
 #dangky {
-  font-size: 9px;
+  font-size: 10px;
   color: #444;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.5px;
   margin-bottom: 10px;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 
 #titlecarousel {
@@ -1336,21 +1445,22 @@ input:focus {
 .single-featured-post .post-share-area {
   position: relative;
   z-index: 1;
-  width: 100%;
+  width: 55%;
   height: 40px;
-  border: 1px solid #ebebeb;
+  border: 2px solid #ebebeb;
   margin-top: 30px;
   overflow: hidden;
 }
 .single-featured-post .post-share-area .post-meta a {
-  font-size: 10px;
+  font-size: 18px;
+  font-weight:bold;
   color: #ed3974;
-  letter-spacing: 4px;
-  margin-right: 20px;
+  letter-spacing: 3px;
+
 }
 .single-featured-post .post-share-area .post-meta a:hover,
 .single-featured-post .post-share-area .post-meta a:focus {
-  color: #777777;
+  color: dimgray;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1499px) {
   .single-featured-post .post-share-area .post-meta a {

@@ -72,14 +72,25 @@
 
             <div class="single-sidebar-widget p-30">
                 <!-- Section Title -->
+                @guest
                 <div class="section-heading">
                     <h5>JOIN IN</h5>
                 </div>
-
+                
                 <div class="newsletter-form">
                     <p>Join & Subscribe our newsletter gor get notification about new updates, information discount, etc.</p>
                     <form action="#" method="get">
-                        <button type="submit" id="dangky" class="btn btn-light mag-btn w-100">LOGIN</button>
-                        <button type="submit" id="dangky" class="btn btn-light mag-btn w-100">REGISTER</button>
+                        <a  id="dangky" href="{{ route('login') }}" class="btn btn-light mag-btn w-100">LOGIN</a>
+                        <a  id="dangky" href="{{ route('register')}}" class="btn btn-light mag-btn w-100">REGISTER</a>
                     </form>
                 </div>
+                @else
+                <div class="section-heading">
+                    <h5>JOIN IN</h5>
+                </div>
+                
+                <div class="newsletter-form">
+                    <p>Great to have you back !</p>
+                   
+                </div>
+                @endguest

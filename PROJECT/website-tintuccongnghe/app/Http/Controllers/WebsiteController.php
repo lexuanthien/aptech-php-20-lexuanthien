@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 class WebsiteController extends Controller
 {
+    function __construct()
+    {
+        if(Auth::check()) {
+            view()->share('thanhvien', Auth::user());
+        }
+    }
+    
     function TrangChu()
     {
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
@@ -68,6 +75,17 @@ class WebsiteController extends Controller
             ]);
     }
 
+    function MoiNhat()
+    {
+        $dt = Carbon::now('Asia/Ho_Chi_Minh');
+
+        $category = Category::get();
+
+        $post = Post::orderBy('created_at','desc')->paginate(10);
+
+        return view('page_home.moinhat', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
+    }
+
     // LẤY DỮ LIỆU BẰNG ID TRUYÊN Ở ROUTE
    
     // function TinTuc($id) {
@@ -96,6 +114,7 @@ class WebsiteController extends Controller
 
         return view('page_home.register', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
     }
+    
     function postRegister(Request $request) {
         $user = User::create([
             'name' => $request->name,
@@ -143,14 +162,7 @@ class WebsiteController extends Controller
     // ĐĂNG XUẤT
     function Logout(Request $request) {
         Auth::logout();
-        return redirect()->route('trangchu');
-    }
-
-    function __construct()
-    {
-        if(Auth::check()) {
-            view()->share('thanhvien', Auth::user());
-        }
+        return back();
     }
 
     // TÌM KIẾM
