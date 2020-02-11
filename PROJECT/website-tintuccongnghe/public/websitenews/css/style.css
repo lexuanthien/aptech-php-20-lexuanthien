@@ -5,6 +5,7 @@
 
 #hinhlogo {
   width: 50px;
+  margin-left: 20px;
 }
 
 
@@ -88,13 +89,14 @@
 
 .search-btn {
   color: #e84118;
-  width:35px;
-  height: 10px;
+  width:40px;
+  height: 15px;
   float: right;
   background-color: #2f3640;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   border: #2f3640;
 }
 
@@ -205,20 +207,24 @@ li.dropdown {
   background-color: rgb(37, 35, 35);
   height: auto;
 }
+#icon1 {
+  border-left: 1px solid #444;
+}
 
 #icon a {
   color: silver;
   font-size: 13px;
 }
 
-#footer-logo,
-#about {
+#footer-logo {
   border-right: 1px solid #444;
   font-size: 13px;
 }
 
 #about {
   color: silver;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 #FAMOUS {
   color: rgb(218, 216, 216);
@@ -237,11 +243,6 @@ li.dropdown {
 }
 
 /* footer */
-.darken-overlay img {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
 #image_carousel {
   height: 300px;
@@ -249,9 +250,12 @@ li.dropdown {
   background-size: cover;
   background-position: center;
   background-origin: content-box;
-  /* border: 2px solid #33c2ee; */
   object-fit: cover;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(59, 59, 59) !important;
+  display: table;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-position: center top;
+  color: white;
 }
 
 .tinmoinhat {
@@ -265,17 +269,52 @@ li.dropdown {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 
+.carousel-caption {
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+  padding: 10px 10px;
+  border-radius: 3px;
+}
+
 #titlecarousel {
-  font-size: 20px;
-  width: 450px;
+  font-size: 18px;
   color: white;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+@media only screen and (min-width: 1200px) and (max-width: 1499px) {
+  #titlecarousel {
+    width: auto;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #titlecarousel {
+    width: auto;
+    font-size: 15px;
+
+  }
+}
+@media only screen and (max-width: 767px) {
+  #titlecarousel {
+    width: auto;
+    font-size: 13px;
+  }
+}
+
 #titlecarousel:hover {
-  color: #1ccdec;
+  color: #ed3974;
+}
+
+#reading {
+  color:white; 
+  font-size: 13px; 
+  letter-spacing: 1px;
+}
+#reading:hover {
+  color: #ed3974;
+  background-color: rgba(0,0,0,0) !important;
 }
 
 
@@ -293,6 +332,8 @@ li.dropdown {
 #nutlogin:hover {
   color: gold;
 }
+
+
 
 /* Master Stylesheet */
 /* :: 1.0 Import Fonts */
@@ -542,6 +583,10 @@ input:focus {
 /* :: 3.6.0 ScrollUp */
 
 /* :: 6.0 Post Area CSS */
+.mag-posts-area {
+  position: relative;
+  z-index: 1;
+  padding: 0 15px; }
 
 .post-sidebar-area {
   position: relative;
@@ -595,6 +640,12 @@ input:focus {
 .mag-posts-content {
   position: relative;
   background-color: #ffffff;
+  z-index: 1;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(100% - 690px);
+  flex: 0 0 calc(100% - 690px);
+  max-width: calc(100% - 690px);
+  width: calc(100% - 690px);
 
   margin-left: 15px;
   margin-right: 15px;
@@ -784,15 +835,21 @@ input:focus {
 }
 
 .single-blog-post .post-content .post-cate {
-  font-size: 13px;
   margin-bottom: 2px;
   display: block;
-  width: 180px;
+  width: 170px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
   color: rgb(80, 80, 80);
+}
+@media only screen and (min-width: 992px) and (max-width: 1499px) {
+  .single-blog-post .post-content .post-cate {
+    font-size: 14px;
+    display: block;
+    width: 150px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -805,7 +862,7 @@ input:focus {
 }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .single-blog-post .post-content .post-cate {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 .single-blog-post .post-content .post-cate:hover,
@@ -1411,7 +1468,7 @@ input:focus {
   color: #777777;
 }
 .single-featured-post .post-content .post-title {
-  font-size: 30px;
+  font-size: 25px;
   display: block;
   margin-bottom: 15px;
   width: 380px;
@@ -1452,10 +1509,9 @@ input:focus {
   overflow: hidden;
 }
 .single-featured-post .post-share-area .post-meta a {
-  font-size: 18px;
   font-weight:bold;
   color: #ed3974;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 
 }
 .single-featured-post .post-share-area .post-meta a:hover,
@@ -2324,5 +2380,3 @@ blockquote .quote-name {
 .about-us-content ul li i {
   margin-right: 5px;
 }
-
-/* image_carousel */

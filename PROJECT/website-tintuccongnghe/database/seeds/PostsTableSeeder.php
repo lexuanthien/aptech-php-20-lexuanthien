@@ -24,7 +24,8 @@ class PostsTableSeeder extends Seeder
                 'tin_hot' => array_random($TinHot),
                 'image'=> '',
                 'slug' => str_slug($thien->text($maxNbChars = 20)),
-                'so_like' => 0,
+                'likes' => 0,
+                'views' => 0
             ]);
         }
     }

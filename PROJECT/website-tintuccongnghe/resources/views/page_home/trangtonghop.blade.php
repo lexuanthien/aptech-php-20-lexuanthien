@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         
-    <link rel="icon" href="{{ url('http://localhost:8000/websitenews/image/logo.jpg') }}">
+    <link rel="icon" href="{{ asset('websitenews/image/logo.jpg') }}">
 
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/websitenews/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('websitenews/css/style.css') }}">
   </head>
   <body id="body">
     <!--PHẦN LOGO + MENU-->  
@@ -27,7 +27,7 @@
     
 
     <!-- ##### Breadcrumb Area Start ##### -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url('http://localhost:8000/websitenews/image/background.jpg');">
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url('/websitenews/image/background.jpg');">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -69,7 +69,7 @@
                         <div class="single-catagory-post d-flex flex-wrap">
                             <!-- Thumbnail -->
                             <div class="post-thumbnail bg-img">
-                            <a href="{{ route('xembaiviet', $tin->slug) }}"><img  id="image" src="/uploads/posts/{{$tin->image}}"></a>
+                            <a href="{{ route('xembaiviet', $tin->slug) }}"><img  id="image" src="{{ asset('uploads/posts/' . $tin->image) }}"></a>
                             </div>
 
                             <!-- Post Contetnt -->

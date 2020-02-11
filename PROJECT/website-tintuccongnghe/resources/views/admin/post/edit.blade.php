@@ -58,7 +58,7 @@
                 </div>
               </form>
 
-              <script src="http://localhost:8000/webtintuc/ckeditor/ckeditor.js"></script>
+              <script src="{{ asset('websitenews/ckeditor/ckeditor.js') }}"></script>
       
               <script>
                 CKEDITOR.replace('content');

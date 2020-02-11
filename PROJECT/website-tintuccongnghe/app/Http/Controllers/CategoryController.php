@@ -37,7 +37,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::insert(
-            ['name' => $request->category_name]
+            ['name' => $request->category_name,
+             'slug' => str_slug($request->category_name)  
+            ]
         );
         return redirect()->route('categories.index');
     }

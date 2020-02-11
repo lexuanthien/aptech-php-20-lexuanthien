@@ -2,8 +2,8 @@
     <nav id="logoNavbar1" class="navbar navbar-expand-md sticky-top">
         <div class="container-fluid">
             
-            <a class="navbar-brand" href="{{ route('trangchu') }}">
-                <img id="hinhlogo" src="{{ url('http://localhost:8000/websitenews/image/inews.png') }}">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img id="hinhlogo" src="{{ asset('websitenews/image/inews.png') }}">
             </a>
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
@@ -100,9 +100,6 @@
           <div class="col-6 d-none d-md-block col-md-4">
               <nav class="navbar navbar-expand-sm navbar-dark justify-content-end">
                 <ul id="listNavbar3" class="navbar-nav">
-                        <li class="nav-item">
-                        <a class="nav-link">{{ $time->toDateString() }}</a>
-                        </li>
                         <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fab fa-facebook-f"></i><a>
                         </li>

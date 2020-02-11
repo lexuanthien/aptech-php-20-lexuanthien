@@ -1,5 +1,6 @@
 #body {
-    background-color:	rgb(56,56,56);
+    /* background-color:	rgb(56,56,56); */
+    background-color: 	rgb(80,80,80);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -9,13 +10,14 @@
     background-color: brown !important;
 }
 #listNavbar1 li a {
-    color: white !important;
+    color: #f4f4f4 !important;
     font-weight: bold;
     letter-spacing: 1px;
     margin-right: 20px;
+    font-size: 15px;
 }
 #listNavbar1 li a:hover {
-    color: rgb(43, 65, 65) !important;
+    color: rgb(37, 78, 78) !important;
 }
 
 #menu {
@@ -24,6 +26,7 @@
 #search {
     color: white;
     padding-left: 80px;
+    
 }
 
 .dropdown {
@@ -50,10 +53,10 @@
 
 /* MENU 2 */
 #phanmenu2 {
-    background-color: #556B2F !important;
+    background-color: rgb(113, 143, 60) !important;
 }
 #listNavbar2 li a {
-    color: white !important;
+    color: #f4f4f4 !important;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -64,7 +67,7 @@
 }
 
 #listNavbar3 li a {
-    color: silver !important;
+    color: #f4f4f4 !important;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -78,26 +81,39 @@
 
 /* PHẦN FOOTER */
 #footer {
-    background-color: black;
-    height: 300px;
+    background-color: rgb(37, 35, 35);
+    height: auto;
 }
 
 #icon a{
     color: silver;
+    font-size: 13px;
 }
 
 #footer-logo,
 #about {
     border-right: 1px solid #444;
+    font-size: 13px;
 }
 
 #about {
     color:silver;
 }
 #FAMOUS {
-    color: white;
+    color: rgb(218, 216, 216);
     font-weight: bold;
-    font-family: serif;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+}
+#copyright {
+    color: #aaaaaa;
+    font-size: 10px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
  /* HẾT FOOTER */
 
@@ -148,7 +164,7 @@
 #mobile,
 #danhmuc,
 #danhgia {
-    font-size: 15px;
+    font-size: 14px;
     font-weight:bold;
     letter-spacing: 0.5px;
     height:auto;
@@ -160,7 +176,7 @@
     font-weight:bold;
     font-family: sans-serif;
     margin-bottom: 4px;
-    color: white;
+    
 }
 
 #hr2 {
@@ -168,13 +184,13 @@
 }
 
 .hr-ngang {
-    background-color: white;
+    background-color: silver;
     height: 2px;
 }
 
 
 .hr-moinhat {
-    background-color: gold;
+    background-color:  gold;
     height: 4px;
     margin-right: 22px;
     margin-top:31px ;
@@ -198,8 +214,9 @@
 
 #cotdanhgia,
 #cotkhampha {
-    margin-top: 10px;
+    margin-top: 2px;
     margin-bottom: 10px;
+    
 }
 
 /* PHẦN MỚI NHẤT */
@@ -210,7 +227,7 @@
     background-size: cover;
     background-position: center;
     background-origin: content-box;
-    border: 2px solid white;
+    border: 2px solid  white;
     padding: 2px;
 }
 
@@ -225,10 +242,10 @@
 }
 
 #dau3cham {
-    width: 220px;
+    width: 210px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     overflow: hidden;
     /* dùng để đổi text thành dấu 3 chấm */
 }
@@ -239,7 +256,7 @@
     background-size: cover;
     background-position: center;
     background-origin: content-box;
-    border: 2px solid white;
+    border: 2px solid  white;
     padding: 2px;
 }
 
@@ -251,4 +268,94 @@
     overflow: hidden;
     color: #FF4500;
     font-weight:bold;
+}
+
+#thoigian {
+    color: #FF4500;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+#de {
+    color: gold;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+#tindanhgia {
+    width: 260px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    /* margin-bottom:5px;
+    border-bottom: 2px solid  white; */
+}
+
+#hrdanhgia {
+    background-color: silver;
+    height: 2px;
+}
+
+#titleposts {
+    width: 595px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+#titleposts:hover {
+    color: rgb(97, 238, 238) !important;
+    
+}
+
+#titledes {
+    width: 595px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    
+}
+
+#phantrang {
+    color: #aaaaaa;
+    font-size: 20px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+/* TRANG XEM CHI TIẾT */
+#show {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+    border: 1px solid darkgrey;
+    background-color: white;
+    color: gray;
+}
+
+#button_share {
+    background-color: #3578E5;
+   
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+}
+
+#button_like {
+    background-color: red;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    margin-right: 7px;
 }

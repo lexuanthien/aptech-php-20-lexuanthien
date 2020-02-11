@@ -11,8 +11,9 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::insert([
-            ['name'=> 'MOBILE'], ['name' => 'INTERNET'], ['name' => 'ESPORTS'], ['name' => 'CÔNG NGHỆ'], ['name' => 'ĐÁNH GIÁ']
+        Category::create([
+            'name'=> 'MOBILE',
+            'slug' => str_slug('mobile'),
         ]);
     }
 }

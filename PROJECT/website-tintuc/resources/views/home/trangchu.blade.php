@@ -20,8 +20,8 @@
     <nav id="logoNavbar1" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
         <div class="container">
             <div class="">
-            <a class="navbar-brand" href="#">
-                <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="70px">
+            <a class="navbar-brand" href="{{ route('trangchu') }}">
+                <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="60px">
             </a>
             </div>
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -30,12 +30,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul id="listNavbar1" class="navbar-nav ml-auto">
                       <li class="nav-item">
-                        <a class="nav-link active d-none d-md-block" href="#"><i class="fas fa-home fa-lg pb-2"></i></a>
+                        <a class="nav-link active d-none d-md-block" href="{{ route('trangchu') }}"><i class="fas fa-home fa-lg pb-2"></i></a>
                       </li>
 
                       @foreach($categories->take(5) as $category)
                       <li class="nav-item">
-                        <a class="nav-link" href="#">{{$category->name}}</a>
+                        <a class="nav-link" href="{{ route('tintuc', $category->id) }}">{{$category->name}}</a>
                       </li>
                       @endforeach
                       <!-- <li class="nav-item dropdown">
@@ -46,22 +46,25 @@
                       </div>
                       </li> -->
                 </ul>
+                
                 <form id="search" class="nav-light">
-                        <i class="d-none d-md-block fas fa-search fa-lg"></i>
+                        <!-- <i class="d-none d-md-block fas fa-search fa-lg"></i> -->
+                        <input type="search" name="top-search" id="topSearch" placeholder="Search and hit enter...">
+                        <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
         </div>
       </div>
     </nav>
     <!--HẾT PHẦN LOGO + MENU-->    
-
+    
     <!--PHẦN MENU 2-->
-    <br>
-    <div id="phanmenu2" class="container-fluid bg-dark">
+    
+    <div id="phanmenu2">
       <div class="container">
         <div class="row">
           <div class="d-none d-sm-block col-sm-12 col-md-8 ">
             <nav class="navbar navbar-expand-sm">
-              <ul id="listNavbar2" class="navbar-nav">  
+              <ul id="listNavbar2" class="navbar-nav mr-auto">  
                         <li class="nav-item">
                         <a class="nav-link" href="#">MỚI NHẤT</a>
                         </li>
@@ -76,13 +79,17 @@
                         </li>
                         <li class="nav-item ">
                         <a class="nav-link" href="#">JOIN/SIGN IN <i class="fas fa-sign-in-alt"></i></a>
-                        </li>  
+                        </li>
+                          
                 </ul>
             </nav>
           </div>
           <div class="col-6 d-none d-md-block col-md-4">
               <nav class="navbar navbar-expand-sm navbar-dark justify-content-end">
                 <ul id="listNavbar3" class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link">{{ $time }}</a>
+                        </li>
                         <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fab fa-facebook-f"></i><a>
                         </li>
@@ -115,7 +122,7 @@
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
               <ul class="carousel-indicators">
-                <?php $tinhot = $posts->where('tin_hot',2)->sortByDesc('created_at')->take(5); 
+                <?php $tinhot = $posts->where('tin_hot',2)->sortByDesc('created_at')->take(3); 
                 
                 ?>
                 @for($i = 0; $i < count($tinhot); $i++)
@@ -188,8 +195,8 @@
               </div>
 
               <div class="col-9 text-algin-center">
-                <h4>{{ $moinhat['title'] }}</h4>
-                <p>{{ $moinhat['description'] }}</p>
+                <h4 id= "titleposts">{{ $moinhat['title'] }}</h4>
+                <p id= "titleposts">{{ $moinhat['description'] }}</p>
               </div>
             <!-- <div class="col-3">
               <a>HÌNH ẢNH</a>
@@ -261,7 +268,7 @@
       <div class="row">
         <div class="col-9">
           @foreach($categories->take(3) as $category) <!--dùng take(3) để chỉ lấy ra 3 hàng trong categories-->
-            <div class="row my-4">
+            <div class="row my-3">
               <div class="col-md-4 col-lg-2">
                 <a id="mobile" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">{{ $category->name }}</a>
               </div>
@@ -279,8 +286,11 @@
                 </div>
 
                 <div class="col-9 text-algin-center">
-                  <h4>{{$post_doc['title']}}</h4>
-                  <p>{{$post_doc['description']}}</p>
+                  <h4 id= "titleposts">{{$post_doc['title']}}</h4>
+                  <div class="mb-2">
+                        <b id="de" ><i>inews - <a id="thoigian"> {{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a></i></b>
+                  </div>
+                  <p id= "titleposts">{{$post_doc['description']}}</p>
                 </div>  
               </div>
               <!-- POST NGANG 4 CÁI -->
@@ -294,7 +304,9 @@
 
                     <div class="col-7" style="height:100px;">
                       <span id="dau3cham" >{{$tin['title']}}</span>
-                      <i><b>{{$tin['created_at']}}</b></i>
+                      <div class="mb-2">
+                        <b id="de" ><i>inews - <a id="thoigian"> {{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a></i></b>
+                      </div>
                     </div>  
                   </div>
                 </div>
@@ -305,7 +317,7 @@
 
 
         <div class="col-3">
-            <div class="row my-4">
+            <div class="row my-3">
                 <div class="col-12">
                   <a id="danhgia" href="#" class="btn btn-danger rounded-0 mt-3" role="submit">ĐÁNH GIÁ</a>
                   
@@ -313,7 +325,14 @@
               </div>
               <div class="row mt-3">
                 <div class="col-12">
-                  <a>LÊ XUÂN THIỆN</a>
+                <?php $danhgia = $posts->where('category_id',5)->sortByDesc('created_at')->take(5); 
+                
+                ?>
+                @foreach($danhgia as $tindanhgia)
+                  <a id="tindanhgia">{{ $tindanhgia->title }}</a>
+                  <b id="de" ><i>inews - <a id="thoigian"> {{$tin['created_at']->toDateString()}} / {{$tin['created_at']->diffForHumans()}}</a></i></b>
+                  <hr id= "hrdanhgia">
+                @endforeach  
                 </div>  
             </div>
 
@@ -324,17 +343,13 @@
               </div>
               <div class="row mt-2">
                 <div id="danhmuc" class="col-12">
-                  <div>
-                    <a href="#">TIN TỨC</a>
-                  </div>
+                  @foreach($categories as $category)
                   <div id="cotdanhgia">
-                    <a href="#">ĐÁNH GIÁ</a>
+                    <a href="#">{{ $category->name }}</a>
                   </div>
-                  <div>
+                  @endforeach
+                  <div id="cotdanhgia">
                     <a href="#">CỘNG ĐỒNG</a>
-                  </div>
-                  <div id="cotkhampha">
-                    <a href="#">KHÁM PHÁ</a>
                   </div>
                   <div>
                     <a href="#">LIÊN HỆ</a>
@@ -350,15 +365,15 @@
     <br>
     <br>
     <div id="footer">
-        <div class="container pt-5">
+        <div class="container py-4">
         <div class="row">
           <div id="footer-logo" class="d-none d-lg-block col-lg-3" style="justify-content: center; display: flex; align-items: center; flex-direction: column; text-align: center;">
                 <a id="logo" class="navbar-brand " href="#">
-                        <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="200px" width="200px" alt="">
+                        <img src="{{ url('http://localhost:8000/webtintuc/image/LOGO.png') }}" height="150px" width="150px" alt="">
                 </a>
           </div>
           <div id="about" class="col-sm-9 col-md-6">
-                <p id="FAMOUS">FAMOUS SAYING:</p>  
+                <p id="FAMOUS">ABOUT</p>  
                 <b>I'VE NEVER SOUGHT SUCCESS IN ORDER TO GET FAME AND MONEY. IT'S THE TALENT AND THE PASSION THAT COUNT IN SUCCESS...</b><br>
                 <b><i>" Thành công lớn nhất là đứng dậy sau mỗi lần bị vấp ngã! "</i></b>
           </div>
@@ -372,7 +387,10 @@
                 </ul>
           </div>
         </div>
-        <hr>
+        <br>
+          <div class="row">
+            <div class="col-12"><a id="copyright"> DESIGN by LEXUANTHIEN</a></div>
+          </div>
         </div>
     </div>
   </body>

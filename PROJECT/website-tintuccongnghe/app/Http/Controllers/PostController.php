@@ -45,7 +45,8 @@ class PostController extends Controller
         $posts->category_id  = $request->category_id;
         $posts->tin_hot = $request->news;
         $posts->slug = str_slug($request->title);
-        $posts->so_like = 1;
+        $posts->likes = 0;
+        $posts->views = 0;
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -126,6 +127,7 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('posts.index');
     }
+    
     // Like
     public function like(Request $request,  $id)
     {

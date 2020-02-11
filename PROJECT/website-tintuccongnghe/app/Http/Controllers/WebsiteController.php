@@ -11,30 +11,20 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class WebsiteController extends Controller
-{
-    function __construct()
-    {
-        if(Auth::check()) {
-            view()->share('thanhvien', Auth::user());
-        }
-    }
-    
+{   
     function TrangChu()
     {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh');
 
         $category = Category::get();
 
         $post = Post::get();
 
-        return view('page_home.trangchu', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
+        return view('page_home.trangchu', ['categories' => $category, 'posts' => $post]);
     }
 
     // LẤY DỮ LIỆU BẰNG SLUG TRUYÊN Ở ROUTE
     function TinTuc($slug)
     {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh'); //THỜI GIAN
-
         $category = Category::get(); //MENU
 
         $theloai = Category::where('slug', '=', $slug)->firstOrFail(); //SLUG NHẬP VÀO TRÊN ROUTE = SLUG DATA -> HIỂN THỊ
@@ -43,7 +33,6 @@ class WebsiteController extends Controller
             $posts = $theloai->posts()->orderBy('created_at', 'desc')->paginate(5);
 
             return view('page_home.trangtonghop', [
-                'time' => $dt,
                 'categories' => $category, 
                 'theloaipost' => $theloai, 
                 'posts' => $posts
@@ -53,8 +42,6 @@ class WebsiteController extends Controller
 
     function XemChiTiet($slug)
     {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh'); //TIME
-
         $category = Category::get(); //MENU
 
         $post = Post::where('slug', '=', $slug)->with('category')->first();
@@ -70,20 +57,17 @@ class WebsiteController extends Controller
         return view('page_home.trangxemchitiet', [
             'categories' => $category,
             'posts' => $post, 
-            'time' => $dt, 
             'tinlienquan' => $postlienquan
             ]);
     }
 
     function MoiNhat()
     {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh');
-
         $category = Category::get();
 
         $post = Post::orderBy('created_at','desc')->paginate(10);
 
-        return view('page_home.moinhat', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
+        return view('page_home.moinhat', ['categories' => $category, 'posts' => $post]);
     }
 
     // LẤY DỮ LIỆU BẰNG ID TRUYÊN Ở ROUTE
@@ -106,16 +90,24 @@ class WebsiteController extends Controller
 
     function getRegister()
     {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh'); //THỜI GIAN
-
         $category = Category::get(); //MENU
 
-        $post = Post::get();    
+        //$post = Post::get();    
 
-        return view('page_home.register', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
+        return view('page_home.register', ['categories' => $category]);
     }
     
     function postRegister(Request $request) {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ], [
+            'name.required' => 'Bạn chưa nhập Name',
+            'email.required' => 'Bạn chưa nhập Email.',
+            'password.required' => 'Bạn chưa nhập Password.'
+        ]);
+        //Dùng Validate để check khi người dùng chưa nhập vào input mà đã kick vào button thì sẽ không hiển thị lỗi
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -129,13 +121,9 @@ class WebsiteController extends Controller
     // LOGIN
     function getLogin()
     {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh');
-
         $category = Category::get();
 
-        $post = Post::get();
-
-        return view('page_home.login', ['categories' => $category, 'posts' => $post, 'time' => $dt]);
+        return view('page_home.login', ['categories' => $category]);
     }
 
     function postLogin(Request $request)
@@ -167,8 +155,6 @@ class WebsiteController extends Controller
 
     // TÌM KIẾM
     function TimKiem(Request $request) {
-        $dt = Carbon::now('Asia/Ho_Chi_Minh'); //TIME
-
         $category = Category::get(); //MENU
 
         $timkiem = $request->timkiem;
@@ -177,7 +163,6 @@ class WebsiteController extends Controller
 
         return view('page_home.search', [
             'categories' => $category,
-            'time' => $dt, 
             'posts' => $post, 
             'timkiem' => $timkiem
             ]);

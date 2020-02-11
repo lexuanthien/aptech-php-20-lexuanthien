@@ -17,9 +17,9 @@
 
     <title>Đăng Ký</title>
 
-    <link rel="icon" href="{{ url('http://localhost:8000/websitenews/image/logo.jpg') }}">
+    <link rel="icon" href="{{ asset('websitenews/image/logo.jpg') }}">
 
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/websitenews/css/style.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('websitenews/css/style.css') }}"> 
 </head>
 
 <body>
@@ -55,6 +55,26 @@
                             
                             <button id="nutlogin" type="submit" class="btn btn-outline-light rounded-0">REGISTER</button>
                         </form>
+                        
+                        <br>
+                        <div>
+                            <!-- DÙNG ĐỂ HIỂN THỊ LỖI -->
+                            @if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}<br>
+                                @endforeach
+                            <div>
+                            @endif
+                            
+                            @if(session('thongbao'))
+                                <div class="alert alert-danger">
+                                        {{session('thongbao')}}
+                                </div>
+                            @endif
+                        <!-- HIỂN THỊ LỖI -->
+                        </div>
+                        
                     </div>
                 </div>
             </div>

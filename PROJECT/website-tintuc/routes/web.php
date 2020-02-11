@@ -15,19 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('trangchu', function() {
-    return view('home.trangchu');
-});
-
-Route::get('master', function() {
+Route::get('master', function () {
     return view('admin.master');
 });
 
-Route::get('admin/login', 'DangNhapAdminController@getLoginAdmin')->name('login.input');
-Route::post('admin/login', 'DangNhapAdminController@postLoginAdmin')->name('login.store');
+Route::get('admin/login', 'LoginAdminController@getLoginAdmin')->name('login.input');
+Route::post('admin/login', 'LoginAdminController@postLoginAdmin')->name('login.store');
 
-Route::group(['prefix'=>'admin'], function() {
+Route::get('admin/register', 'LoginAdminController@getRegisterAdmin')->name('register.input');
+Route::post('admin/register', 'LoginAdminController@postRegisterAdmin')->name('register.store');
+
+Route::get('admin/logout', 'LoginAdminController@LogoutAdmin')->name('logout');
+
+//  'middleware' => 'LoginPageAdmin'
+
+Route::group(['prefix' => 'admin', 'middleware'=> 'LoginPageAdmin'], function () {
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
     Route::resource('categories', 'CategoryController');
@@ -35,4 +37,28 @@ Route::group(['prefix'=>'admin'], function() {
     Route::resource('comments', 'CommentController');
 });
 
-Route::get('trangchu', 'HomeController@TrangChu');
+Route::get('trangchu', 'HomeController@TrangChu')->name('trang_chu');
+Route::get('tintuc/{id}.html', 'HomeController@TinTuc')->name('tintuc');
+Route::get('xemchitiet/{id}.html', 'HomeController@XemChiTiet')->name('xemchitiet');
+
+Route::get('home', 'WebsiteController@TrangChu')->name('trangchu');
+Route::get('news/{slug}.html', 'WebsiteController@TinTuc')->name('news');
+Route::get('show/{slug}.html', 'WebsiteController@XemChiTiet')->name('xembaiviet');
+
+Route::get('tinmoinhat', 'WebsiteController@MoiNhat')->name('moinhat');
+
+
+Route::get('login', 'WebsiteController@getLogin')->name('login');
+Route::post('login', 'WebsiteController@postLogin')->name('login.post');
+Route::get('logout', 'WebsiteController@Logout')->name('dangxuat');
+
+Route::get('register', 'WebsiteController@getRegister')->name('register');
+Route::post('register', 'WebsiteController@postRegister')->name('register.post');
+
+Route::get('timkiem', 'WebsiteController@TimKiem')->name('timkiem');
+
+Route::post('comment/{id}', 'CommentController@store')->name('comment');
+
+
+
+

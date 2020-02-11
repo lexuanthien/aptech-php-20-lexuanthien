@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/webtintuc/css/trangadmin.css') }}">
+    <link rel="stylesheet" href="{{ asset('websitenews/css/trangadmin.css') }}">
   </head>
   <body id="body">
     <nav class="navbar navbar-expand-md bg-dark sticky-top">
@@ -41,7 +41,7 @@
           <ul id="list" class="list-unstyled m-2">
 
             <div class="my-3">
-              <li><a href="{{ route('posts.index')}}"><i class="fas fa-home"></i> Trang Chủ </a></li> 
+              <li><a href="{{ route('posts.index') }}"><i class="fas fa-home"></i> Trang Chủ </a></li> 
             </div>
 
             <div class="dropdown-divider"></div>

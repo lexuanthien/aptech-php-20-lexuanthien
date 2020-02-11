@@ -7,28 +7,55 @@ use Illuminate\Http\Request;
 
 class LoginAdminController extends Controller
 {
-    public function getLoginAdmin() {
+
+    //ĐĂNG NHẬP
+    public function getLoginAdmin()
+    {
         return view('admin.login_admin');
     }
 
-    public function postLoginAdmin(Request $request) {
+    public function postLoginAdmin(Request $request)
+    {
         $this->validate($request, [
-            'email'=>'required',
-            'password'=> 'required'
-        ],[
+            'email' => 'required',
+            'password' => 'required'
+        ], [
             'email.required' => 'Bạn chưa nhập Email.',
             'password.required' => 'Bạn chưa nhập Password.'
         ]);
-        
+
         $data = [
             'email' => $request->email,
             'password' => $request->password,
         ];
-
-        if(Auth::attempt($data)) {
-            return redirect()->route('users.index');
+        if (Auth::attempt($data)) {
+            return redirect()->route('posts.index');
         } else {
             return redirect()->route('login.input')->with('thongbao', 'Đăng Nhập Không Thành Công');
         }
+    }
+
+    // ĐĂNG KÝ
+    public function getRegisterAdmin()
+    {
+        return view('admin.register_admin');
+    }
+
+    public function postRegisterAdmin(Request $request)
+    {
+        $user = \App\User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role_id' => 3,
+            'password' => bcrypt($request->password),
+        ]);
+        if ($user)
+            return redirect()->route('login.input');
+    }
+
+    //ĐĂNG XUẤT
+    public function LogoutAdmin(Request $request) {
+        Auth::logout();
+        return redirect()->route('login.input');
     }
 }

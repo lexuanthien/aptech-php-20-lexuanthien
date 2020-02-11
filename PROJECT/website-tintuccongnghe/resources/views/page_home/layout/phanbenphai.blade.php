@@ -38,7 +38,7 @@
                 <!-- Single YouTube Channel -->
                 <div class="single-youtube-channel d-flex">
                     <div class="youtube-channel-thumbnail">
-                        <img src="{{ url('http://localhost:8000/websitenews/image/musicnguoncamxuc.png') }}" alt="">
+                        <img src="{{ asset('websitenews/image/musicnguoncamxuc.png') }}" alt="">
                     </div>
                     <div class="youtube-channel-content">
                         <a href="https://www.youtube.com/channel/UCB8h3yd2DK7fNTc46IvUy6w?sub_confirmation=1" class="channel-title">MUSIC - NGUỒN CẢM XÚC</a>
@@ -49,7 +49,7 @@
 
                 <div class="single-youtube-channel d-flex">
                     <div class="youtube-channel-thumbnail">
-                        <img src="{{ url('http://localhost:8000/websitenews/image/pageface.jpg') }}" alt="">
+                        <img src="{{ asset('websitenews/image/pageface.jpg') }}" alt="">
                     </div>
                     <div class="youtube-channel-content">
                         <a href="https://www.facebook.com/testLonely" class="channel-title">LONELY PAGE</a>
@@ -60,7 +60,7 @@
 
                 <div class="single-youtube-channel d-flex">
                     <div class="youtube-channel-thumbnail">
-                        <img src="{{ url('http://localhost:8000/websitenews/image/logo.jpg') }}" alt="">
+                        <img src="{{ asset('websitenews/image/logo.jpg') }}" alt="">
                     </div>
                     <div class="youtube-channel-content">
                         <a href="https://www.youtube.com/channel/UCB8h3yd2DK7fNTc46IvUy6w/videos" class="channel-title">LISTEN TO SAD MUSIC</a>

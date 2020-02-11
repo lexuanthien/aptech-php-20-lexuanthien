@@ -13,7 +13,7 @@
         <thead>
         <tr class="text-center text-danger">
                 <?php
-                    $PostArray = ['ID','NAME','EMAIL', 'PASSWORD', 'VAI TRÒ','EDIT', 'XÓA'];
+                    $PostArray = ['ID','NAME','EMAIL', 'VAI TRÒ','EDIT', 'XÓA'];
                     for($i=0 ; $i < count($PostArray); $i++) {
                         echo "<th>" . $PostArray[$i] . "</th>";
                     }
@@ -27,7 +27,6 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->password }}</td>
                     <td>{{ $user->role->name }}</td>
                     <td> 
                       <form action="{{ route('users.edit', $user->id)}}" method="GET">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth; //có dòng này mới làm được cái đăng nhập Admin
 use Illuminate\Http\Request;
+use App\User;
 
 class LoginAdminController extends Controller
 {
@@ -43,7 +44,7 @@ class LoginAdminController extends Controller
 
     public function postRegisterAdmin(Request $request)
     {
-        $user = \App\User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'role_id' => 3,

@@ -17,9 +17,9 @@
 
     <title>Đăng Nhập</title>
 
-    <link rel="icon" href="{{ url('http://localhost:8000/websitenews/image/logo.jpg') }}">
+    <link rel="icon" href="{{ asset('websitenews/image/logo.jpg') }}">
 
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/websitenews/css/style.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('websitenews/css/style.css') }}"> 
 </head>
 
 <body>

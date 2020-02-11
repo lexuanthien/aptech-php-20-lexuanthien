@@ -17,9 +17,9 @@
 
     <title>Website Tin Tức Công Nghệ Hàng Đầu - Tin Tức Mỗi Ngày</title>
 
-    <link rel="icon" href="{{ url('http://localhost:8000/websitenews/image/logo.jpg') }}">
+    <link rel="icon" href="{{ asset('websitenews/image/logo.jpg') }}">
 
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/websitenews/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('websitenews/css/style.css') }}">
 
 </head>
 
@@ -27,13 +27,15 @@
 
     @include('page_home.layout.menu')
 
-    <section class=" d-flex flex-wrap">
+    <section class="mag-posts-area d-flex flex-wrap">
         <div class="post-sidebar-area left-sidebar mt-30 mb-30 bg-white box-shadow">
             <!-- Sidebar Widget -->
             <div class="single-sidebar-widget p-30">
                 <!-- Section Title -->
                 <div class="section-heading">
+                    <a href="{{ route('moinhat') }}">
                     <h5>MỚI NHẤT</h5>
+                    </a>
                 </div>
 
                 <!-- Single Blog Post -->
@@ -83,7 +85,7 @@
             <div class="single-sidebar-widget p-30">
                 <!-- Section Title -->
                 <div class="section-heading">
-                    <h5>CÔNG NGHỆ</h5>
+                <a href=""><h5>CÔNG NGHỆ</h5></a>
                 </div>
 
                 <!-- Single Blog Post -->
@@ -109,13 +111,13 @@
 
         <div class="mag-posts-content mt-30 mb-30 p-30 box-shadow">
             <!-- Trending Now Posts Area -->
-            <div class="mb-30">
+            <div class="trending-now-posts mb-30">
                 <!-- Section Title -->
                 <div class="section-heading">
                     <h5>TRENDING NOW</h5>
                 </div>
 
-                <div id= "carousel" class="row mt-1">
+                <div class="row mt-1">
                     <div class="col-12">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
@@ -144,12 +146,13 @@
                                 @endif
                             >
                             <?php $i++; ?>
-                                <div class="darken-overlay">
-                                    <img id="image_carousel" src="uploads/posts/{{ $tin->image }}" alt="Los Angeles">
+                                <div>
+                                    <a><img id="image_carousel" src="uploads/posts/{{ $tin->image }}"><a>
                                 </div>
-                                <div class="carousel-caption text-left darken-pseudo darken-with-text">
+                                <div class="carousel-caption text-left">
                                     <a href="{{ route('xembaiviet', $tin->slug) }}" id= "titlecarousel">{{ $tin['title'] }}</a>
-                                    <p><a class="btn btn-outline-info rounded-0" style=" font-size: 11px; letter-spacing: 3px;" href="{{ route('xembaiviet', $tin->slug) }}"  role="button">CONTINUE READING</a></p>
+                                    <a id="reading" class=" btn btn-outline-light rounded-0 mt-3" href="{{ route('xembaiviet', $tin->slug) }}"  role="button">CONTINUE READING</a>
+                                    
                                 </div>
                             </div>
                             @endforeach
@@ -166,11 +169,11 @@
                 </div>
             </div>
 
-            <div class="feature-video-posts mb-30 mt-30">
-                <!-- Section Title -->
+            <div class="feature-video-posts mb-30">
+                
                 @foreach($categories->take(3) as $category)
                 <div class="section-heading">
-                    <h5>{{ $category->name }}</h5>
+                <a href="{{ route('news', $category->slug) }}"><h5>{{ $category->name }}</h5><a>
                 </div>
 
                 <div class="featured-video-posts mb-4">
@@ -219,7 +222,7 @@
                                            
                                         </div>
                                         <div class="post-content">
-                                            <a href="{{ route('xembaiviet', $tin->slug) }}" class="post-cate">{{$tin['title']}}</a>
+                                            <a href="{{ route('xembaiviet', $tin->slug) }}" class="post-title">{{$tin['title']}}</a>
                                         </div>
                                     </div>
 

@@ -56,7 +56,7 @@
                   <button type="submit" class="btn btn-success font-weight-bold">TẠO BÀI VIẾT</button>
                 </form>
       
-                <script src="http://localhost:8000/webtintuc/ckeditor/ckeditor.js"></script>
+                <script src="{{ asset('websitenews/ckeditor/ckeditor.js') }}"></script>
       
                 <script>
                   CKEDITOR.replace('editor1');

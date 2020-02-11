@@ -14,7 +14,7 @@
 
     <title>Đăng Nhập Vào Trang Admin</title>
     
-    <link rel="stylesheet" href="{{ url('http://localhost:8000/websitenews/css/login_admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('websitenews/css/login_admin.css') }}">
 </head>
 <body>
     

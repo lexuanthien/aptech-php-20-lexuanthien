@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Comment;
 
 class UserController extends Controller
 {
@@ -96,9 +97,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, $id)
     {
-        $user->delete();
+        $user = User::find($id);
+        $user->comments()->delete();
+        $user->delete(); // (khi xóa user thì commnet của user đó cũng bị xóa)
         return redirect()->route('users.index');
     }
 }
